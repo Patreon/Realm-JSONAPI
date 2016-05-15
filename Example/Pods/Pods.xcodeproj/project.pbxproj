@@ -114,6 +114,9 @@
 		736CBE75919ECD45310FD796D6F9A847 /* SPTCompiledExample.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D68440E7B1AB247D72FA1F8029661B5 /* SPTCompiledExample.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		741C0BD9833FDE099C51629D6BEAC3F9 /* RLMObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 838408FD41C624B75FEB26794E59BBA8 /* RLMObject.h */; };
 		745650BB10DDD21D078D921245575B47 /* JSONAPIResourceRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = F01AF0A5CB86E618ED4EF2476C049A4A /* JSONAPIResourceRegistry.m */; };
+		758826111CE86E7E008B546A /* JSONAPIParserUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 7588260F1CE86E7E008B546A /* JSONAPIParserUtilities.h */; };
+		758826121CE86E7E008B546A /* JSONAPIParserUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 758826101CE86E7E008B546A /* JSONAPIParserUtilities.m */; };
+		758826141CE86FD7008B546A /* RLMObjectWithSubclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 758826131CE86FD7008B546A /* RLMObjectWithSubclass.h */; };
 		76CCABE79C04444450153424D7CE1DC1 /* EXPMatchers+beSupersetOf.h in Headers */ = {isa = PBXBuildFile; fileRef = 92FF677DCE98D0F9B01ED81820B67470 /* EXPMatchers+beSupersetOf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76D337327C10A7555447B69AA1562647 /* EXPMatchers+beInstanceOf.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4A7B205977AB30B8ABABEBDE0F32E5 /* EXPMatchers+beInstanceOf.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		78782B051FF948155AB54730A20173DB /* RLMSwiftSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = A09B38D0C375F5FED20DD51362627B40 /* RLMSwiftSupport.m */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"0.102.1\"' -D__ASSERTMACROS__"; }; };
@@ -463,6 +466,9 @@
 		727AE338BAD18D39E160A64ABF4EB306 /* RLMRealm_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMRealm_Private.h; path = include/RLMRealm_Private.h; sourceTree = "<group>"; };
 		737FF4AB534D04842D6A6AD98147F028 /* Expecta-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Expecta-dummy.m"; sourceTree = "<group>"; };
 		750C8BC12350AF6DB95D631CA8D2E6B7 /* ExpectaObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ExpectaObject.h; path = Expecta/ExpectaObject.h; sourceTree = "<group>"; };
+		7588260F1CE86E7E008B546A /* JSONAPIParserUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPIParserUtilities.h; sourceTree = "<group>"; };
+		758826101CE86E7E008B546A /* JSONAPIParserUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPIParserUtilities.m; sourceTree = "<group>"; };
+		758826131CE86FD7008B546A /* RLMObjectWithSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMObjectWithSubclass.h; sourceTree = "<group>"; };
 		76A7AAC9A8FD57A94E00F5379B5D072F /* EXPMatchers+endWith.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+endWith.m"; path = "Expecta/Matchers/EXPMatchers+endWith.m"; sourceTree = "<group>"; };
 		77444AC5D3920A71FF9B6F6B8A973F3B /* Pods-RLMObject-JSONAPI_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RLMObject-JSONAPI_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		77B98D59D0D862EFCC5D7A9734A9C41F /* RLMCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMCollection.h; path = include/RLMCollection.h; sourceTree = "<group>"; };
@@ -657,6 +663,8 @@
 		201D695B9B1434251158D2F87998CC54 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7588260F1CE86E7E008B546A /* JSONAPIParserUtilities.h */,
+				758826101CE86E7E008B546A /* JSONAPIParserUtilities.m */,
 				EE700CC7F9037AE9106CDB4F3FFB6191 /* JSONAPIResourceRegistry.h */,
 				F01AF0A5CB86E618ED4EF2476C049A4A /* JSONAPIResourceRegistry.m */,
 				255AEDC7CD4BCD94A8359DAEBF2BC4F0 /* JSONAPIURLUtilities.h */,
@@ -665,6 +673,7 @@
 				66158FC17801CA58DF64A86233FC7B8A /* NSDate+ISO8601.m */,
 				EE56CB93BD3FEDA17A526118544BB9DB /* NSDictionary+URLEncoding.h */,
 				B0FCFC20CEB346E9EB353554D55C0164 /* NSDictionary+URLEncoding.m */,
+				758826131CE86FD7008B546A /* RLMObjectWithSubclass.h */,
 				6AC7C6FEF9561CBAE6D2F5C572907FC6 /* RLMObject+JSONAPI.h */,
 				85E0C39DBD85C836AD622CCFF846A4DF /* RLMObject+JSONAPI.m */,
 				48F3E8132BEA4E6365803FFAD51D7E7F /* RLMObject+JSONAPIParser.h */,
@@ -1124,6 +1133,7 @@
 				C4FA1A5DFCE8E1C417F1BB5C9E681148 /* JSONAPIResourceRegistry.h in Headers */,
 				E3482487C5B953F16AC40A96C2E6C40E /* JSONAPIURLUtilities.h in Headers */,
 				E38ACF8656AC64E2ECDB2336B7C08FF7 /* NSDate+ISO8601.h in Headers */,
+				758826111CE86E7E008B546A /* JSONAPIParserUtilities.h in Headers */,
 				404C54EF50C05911DCAEE33303A9925B /* NSDictionary+URLEncoding.h in Headers */,
 				FAD19739E9A085142C32021783E913D8 /* RLMObject+JSONAPI.h in Headers */,
 				BBB4EB1545129EA60BC93C6606D3DB5A /* RLMObject+JSONAPIParser.h in Headers */,
@@ -1131,6 +1141,7 @@
 				5852F341B29DFD62D708B91D2CCE122C /* RLMObject+JSONAPISerializer.h in Headers */,
 				7F6A25E4CC0E3DAC421A6846CED89D43 /* RLMObject+JSONAPIURL.h in Headers */,
 				8C02CFE8879B45B3552C2463C070D96B /* RLMObject-JSONAPI-umbrella.h in Headers */,
+				758826141CE86FD7008B546A /* RLMObjectWithSubclass.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1420,6 +1431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				758826121CE86E7E008B546A /* JSONAPIParserUtilities.m in Sources */,
 				745650BB10DDD21D078D921245575B47 /* JSONAPIResourceRegistry.m in Sources */,
 				92DFE94FC3C632D5638F46DAF6B97402 /* JSONAPIURLUtilities.m in Sources */,
 				A8577050D6434174AD09513E5E359FBA /* NSDate+ISO8601.m in Sources */,
