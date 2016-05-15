@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C3A93C5C64BA2E230D2034B /* Pods_RLMObject_JSONAPI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2096F834C0F12AA1C0DC1628 /* Pods_RLMObject_JSONAPI_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -21,8 +20,9 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		858D23E710AB73A335C1432F /* Pods_RLMObject_JSONAPI_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7669699A4BFD1E1D7CF183 /* Pods_RLMObject_JSONAPI_Example.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		9E0A371F0194AD8A42A65408 /* Pods_RLMObject_JSONAPI_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C7D172488A0C829885F56A /* Pods_RLMObject_JSONAPI_Example.framework */; };
+		E2B76406BDAD7BE161C4C4D4 /* Pods_RLMObject_JSONAPI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F53F810F6E549E31077BBC /* Pods_RLMObject_JSONAPI_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +37,10 @@
 
 /* Begin PBXFileReference section */
 		0822115BBB9247FE159B3507 /* RLMObject-JSONAPI.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "RLMObject-JSONAPI.podspec"; path = "../RLMObject-JSONAPI.podspec"; sourceTree = "<group>"; };
-		2096F834C0F12AA1C0DC1628 /* Pods_RLMObject_JSONAPI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RLMObject_JSONAPI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42252EAAE760F5A0E9CD6E6E /* Pods-RLMObject-JSONAPI_Example-RLMObject-JSONAPI_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLMObject-JSONAPI_Example-RLMObject-JSONAPI_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RLMObject-JSONAPI_Example-RLMObject-JSONAPI_Tests/Pods-RLMObject-JSONAPI_Example-RLMObject-JSONAPI_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		439A7383A4F1E166A58E3F76 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		4697D7127823352F084CFF03 /* Pods-RLMObject-JSONAPI_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLMObject-JSONAPI_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RLMObject-JSONAPI_Tests/Pods-RLMObject-JSONAPI_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		46E6D491CB60CE438390196A /* Pods-RLMObject-JSONAPI_Example-RLMObject-JSONAPI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLMObject-JSONAPI_Example-RLMObject-JSONAPI_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RLMObject-JSONAPI_Example-RLMObject-JSONAPI_Tests/Pods-RLMObject-JSONAPI_Example-RLMObject-JSONAPI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* RLMObject-JSONAPI_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RLMObject-JSONAPI_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -59,12 +60,13 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		77F53F810F6E549E31077BBC /* Pods_RLMObject_JSONAPI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RLMObject_JSONAPI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872FFF7E14064BE09DB3BC0E /* Pods-RLMObject-JSONAPI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLMObject-JSONAPI_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RLMObject-JSONAPI_Example/Pods-RLMObject-JSONAPI_Example.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		8C7669699A4BFD1E1D7CF183 /* Pods_RLMObject_JSONAPI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RLMObject_JSONAPI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE43E18AFDF8E97769755329 /* Pods-RLMObject-JSONAPI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLMObject-JSONAPI_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RLMObject-JSONAPI_Tests/Pods-RLMObject-JSONAPI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D44017582D3E199FDD385702 /* Pods-RLMObject-JSONAPI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLMObject-JSONAPI_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RLMObject-JSONAPI_Example/Pods-RLMObject-JSONAPI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DAF69941C26A76201BA2D6F9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		E9C7D172488A0C829885F56A /* Pods_RLMObject_JSONAPI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RLMObject_JSONAPI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +77,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				858D23E710AB73A335C1432F /* Pods_RLMObject_JSONAPI_Example.framework in Frameworks */,
+				9E0A371F0194AD8A42A65408 /* Pods_RLMObject_JSONAPI_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +88,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				2C3A93C5C64BA2E230D2034B /* Pods_RLMObject_JSONAPI_Tests.framework in Frameworks */,
+				E2B76406BDAD7BE161C4C4D4 /* Pods_RLMObject_JSONAPI_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,8 +123,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				8C7669699A4BFD1E1D7CF183 /* Pods_RLMObject_JSONAPI_Example.framework */,
-				2096F834C0F12AA1C0DC1628 /* Pods_RLMObject_JSONAPI_Tests.framework */,
+				77F53F810F6E549E31077BBC /* Pods_RLMObject_JSONAPI_Tests.framework */,
+				E9C7D172488A0C829885F56A /* Pods_RLMObject_JSONAPI_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -189,6 +191,8 @@
 				872FFF7E14064BE09DB3BC0E /* Pods-RLMObject-JSONAPI_Example.release.xcconfig */,
 				CE43E18AFDF8E97769755329 /* Pods-RLMObject-JSONAPI_Tests.debug.xcconfig */,
 				4697D7127823352F084CFF03 /* Pods-RLMObject-JSONAPI_Tests.release.xcconfig */,
+				46E6D491CB60CE438390196A /* Pods-RLMObject-JSONAPI_Example-RLMObject-JSONAPI_Tests.debug.xcconfig */,
+				42252EAAE760F5A0E9CD6E6E /* Pods-RLMObject-JSONAPI_Example-RLMObject-JSONAPI_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -467,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -500,7 +504,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -516,6 +520,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RLMObject-JSONAPI/RLMObject-JSONAPI-Prefix.pch";
 				INFOPLIST_FILE = "RLMObject-JSONAPI/RLMObject-JSONAPI-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -532,6 +537,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RLMObject-JSONAPI/RLMObject-JSONAPI-Prefix.pch";
 				INFOPLIST_FILE = "RLMObject-JSONAPI/RLMObject-JSONAPI-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

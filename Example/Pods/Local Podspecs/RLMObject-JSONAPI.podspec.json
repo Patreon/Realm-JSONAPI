@@ -1,19 +1,22 @@
 {
   "name": "RLMObject-JSONAPI",
-  "version": "0.1.0",
-  "summary": "A short description of RLMObject-JSONAPI.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/RLMObject-JSONAPI",
-  "license": "MIT",
+  "version": "0.0.1",
+  "summary": "Easily integrate with a JSON-API compliant server",
+  "description": "RLMObject+JSONAPI provides a set of utilities to easily move between\nJSON-API formatted data (http://jsonapi.org) and Realm objects (http://realm.io).",
+  "homepage": "https://github.com/Patreon/RLMObject-JSONAPI",
+  "license": {
+    "type": "Apache 2.0",
+    "file": "LICENSE"
+  },
   "authors": {
-    "David Kettler": "21echoes@gmail.com"
+    "David Kettler": "david@patreon.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/RLMObject-JSONAPI.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/Patreon/RLMObject-JSONAPI.git",
+    "tag": "0.0.1"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "7.0"
   },
   "source_files": "RLMObject-JSONAPI/Classes/**/*",
   "dependencies": {
