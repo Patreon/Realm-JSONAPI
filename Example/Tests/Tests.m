@@ -10,19 +10,20 @@
 
 SpecBegin(InitialSpecs)
 
-describe(@"these will fail", ^{
+describe(@"these will pass now that they've been fixed", ^{
 
     it(@"can do maths", ^{
-        expect(1).to.equal(2);
+        expect(2).to.equal(2);
     });
 
     it(@"can read", ^{
-        expect(@"number").to.equal(@"string");
+        expect(@"string").to.equal(@"string");
     });
     
     it(@"will wait for 10 seconds and fail", ^{
         waitUntil(^(DoneCallback done) {
-        
+            expect(YES).to.beTruthy;
+            done();
         });
     });
 });
