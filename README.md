@@ -9,7 +9,63 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+```objective-c
+#import <RLMObject-JSONAPI/RLMObject+JSONAPI.h>
+
+@interface User : RLMModel
+@property NSString *uid;
+@property NSString *name;
+@property NSString *email;
+@property NSString *avatarURL;
+@end
+
+@implementation User
+
++ (NSDictionary *)JSONtoModelMap {
+    return @{
+        @"id" : @"uid",
+        @"full_name" : @"fullName",
+        @"email" : @"email",
+        @"image_url": @"avatarURL",
+    };
+}
+
++ (NSArray *)defaultRelationships {
+    return @[];
+}
+
++ (NSArray *)defaultAttributes {
+    return @[
+        @"full_name",
+        @"email",
+        @"image_url",
+    ];
+}
+
++ (NSString *)primaryKey {
+    return @"uid";
+}
+
++ (void)fetchUser:(NSString *)uid {
+    NSString *baseURL = [NSString stringWithFormat:@"users/%@", uid];
+    [APICall queueWithURL:[[self class] defaultURLDecoration:baseURL]
+                   params:[self toJSON]
+                   method:HttpMethodGET
+              andCallback:callback];
+}
+
+- (void)postWithCallback:(APICompletionBlock)callback {
+    NSString *baseURL = [NSString stringWithFormat:@"users/%@", self.uid];
+    [APICall queueWithURL:[[self class] defaultURLDecoration:baseURL]
+                   params:[self toJSON]
+                   method:HttpMethodPATCH
+              andCallback:callback];
+}
+```
+
 ## Requirements
+
+[Realm](http://realm.io) and a [JSON:API](http://jsonapi.org)-compliant server
 
 ## Installation
 
@@ -22,8 +78,8 @@ pod "RLMObject-JSONAPI"
 
 ## Author
 
-David Kettler, 21echoes@gmail.com
+David Kettler, david@patreon.com
 
 ## License
 
-RLMObject-JSONAPI is available under the MIT license. See the LICENSE file for more info.
+RLMObject-JSONAPI is available under the Apache 2.0 license. See the LICENSE file for more info.

@@ -1,0 +1,24 @@
+{
+  "name": "RLMObject-JSONAPI",
+  "version": "0.1.0",
+  "summary": "A short description of RLMObject-JSONAPI.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/RLMObject-JSONAPI",
+  "license": "MIT",
+  "authors": {
+    "David Kettler": "21echoes@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/RLMObject-JSONAPI.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "RLMObject-JSONAPI/Classes/**/*",
+  "dependencies": {
+    "Realm": [
+      "~> 0.102.1"
+    ]
+  }
+}
