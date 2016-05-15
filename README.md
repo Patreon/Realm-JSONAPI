@@ -1,6 +1,6 @@
 # RLMObject-JSONAPI
 
-[![CI Status](http://img.shields.io/travis/David Kettler/RLMObject-JSONAPI.svg?style=flat)](https://travis-ci.org/David Kettler/RLMObject-JSONAPI)
+[![CI Status](http://img.shields.io/travis/Patreon/RLMObject-JSONAPI.svg?style=flat)](https://travis-ci.org/Patreon/RLMObject-JSONAPI)
 [![Version](https://img.shields.io/cocoapods/v/RLMObject-JSONAPI.svg?style=flat)](http://cocoapods.org/pods/RLMObject-JSONAPI)
 [![License](https://img.shields.io/cocoapods/l/RLMObject-JSONAPI.svg?style=flat)](http://cocoapods.org/pods/RLMObject-JSONAPI)
 [![Platform](https://img.shields.io/cocoapods/p/RLMObject-JSONAPI.svg?style=flat)](http://cocoapods.org/pods/RLMObject-JSONAPI)
