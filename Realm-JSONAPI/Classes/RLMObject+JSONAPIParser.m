@@ -34,16 +34,17 @@
                      andObjectSchema:(RLMObjectSchema *)objectSchema
 {
   for (NSString *jsonPath in jsonToModelMap) {
-    id value = [self getValueFromJSON:json
-                               atPath:jsonPath];
-    if (!value || value == [NSNull null]) {
-      continue;
-    }
-
     NSString    *modelProperty = jsonToModelMap[jsonPath];
     RLMProperty *realmProperty = objectSchema[modelProperty];
     if (!realmProperty) {
-      // Here we have a JSON property with no equivalent model property
+      // Here we have an attribute in the JSON with no equivalent model property
+      // so we don't try to parse it
+      continue;
+    }
+
+    id value = [self getValueFromJSON:json
+                               atPath:jsonPath];
+    if (!value || value == [NSNull null]) {
       continue;
     }
 
@@ -110,15 +111,16 @@
 {
   NSDictionary *links = json[@"relationships"];
   for (NSDictionary *property in links.keyEnumerator) {
-    NSDictionary *link = links[property];
-    if (!link || ![link isKindOfClass:[NSDictionary class]] || !link[@"data"]) {
-      continue;
-    }
-
     NSString     *modelProperty = jsonToModelMap[property];
     RLMProperty  *realmProperty = objectSchema[modelProperty];
     if (!realmProperty) {
-      // Here we have a JSON property with no equivalent model property
+      // Here we have a relationship in the JSON with no equivalent model property
+      // so we don't try to parse it
+      continue;
+    }
+
+    NSDictionary *link = links[property];
+    if (!link || ![link isKindOfClass:[NSDictionary class]] || !link[@"data"]) {
       continue;
     }
 
