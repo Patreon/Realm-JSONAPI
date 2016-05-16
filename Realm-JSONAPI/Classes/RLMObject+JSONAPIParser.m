@@ -111,7 +111,7 @@
   NSDictionary *links = json[@"relationships"];
   for (NSDictionary *property in links.keyEnumerator) {
     NSDictionary *link = links[property];
-    if (!link[@"data"]) {
+    if (!link || ![link isKindOfClass:[NSDictionary class]] || !link[@"data"]) {
       continue;
     }
 
