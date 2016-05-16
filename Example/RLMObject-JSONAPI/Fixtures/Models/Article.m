@@ -3,10 +3,6 @@
 
 @implementation Article
 
-+ (NSString *)type {
-  return @"articles";
-}
-
 + (NSDictionary *)JSONtoModelMap {
   return @{
            @"id": @"uid",

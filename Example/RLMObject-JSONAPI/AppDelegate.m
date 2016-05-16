@@ -29,9 +29,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 }
 
 - (void)registerResources {
-  [[JSONAPIResourceRegistry sharedInstance] bindJSONType:[Article type] toClass:[Article class]];
-  [[JSONAPIResourceRegistry sharedInstance] bindJSONType:[Person type] toClass:[Person class]];
-  [[JSONAPIResourceRegistry sharedInstance] bindJSONType:[Comment type] toClass:[Comment class]];
+  [[JSONAPIResourceRegistry sharedInstance] bindJSONType:@"articles" toClass:[Article class]];
+  [[JSONAPIResourceRegistry sharedInstance] bindJSONType:@"people" toClass:[Person class]];
+  [[JSONAPIResourceRegistry sharedInstance] bindJSONType:@"comments" toClass:[Comment class]];
 }
 
 - (void)setupRealm {

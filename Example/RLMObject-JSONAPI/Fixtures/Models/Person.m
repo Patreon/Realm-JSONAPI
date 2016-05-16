@@ -2,10 +2,6 @@
 
 @implementation Person
 
-+ (NSString *)type {
-  return @"people";
-}
-
 + (NSDictionary *)JSONtoModelMap {
   return @{
            @"id": @"uid",

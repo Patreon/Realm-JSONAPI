@@ -2,10 +2,6 @@
 
 @implementation Comment
 
-+ (NSString *)type {
-  return @"comments";
-}
-
 + (NSDictionary *)JSONtoModelMap {
   return @{
            @"id": @"uid",
