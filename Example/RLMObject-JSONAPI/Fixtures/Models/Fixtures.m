@@ -21,11 +21,6 @@
 
 + (void)loadFixtures
 {
-  RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
-  config.schemaVersion = 1; // swap with the below to persist to disk
-//  config.inMemoryIdentifier = @"inMemoryRealm";
-  [RLMRealmConfiguration setDefaultConfiguration:config];
-
   NSDictionary *fixtures = [self loadJSON];
 
   [JSONAPIParserUtilities putJSON:fixtures

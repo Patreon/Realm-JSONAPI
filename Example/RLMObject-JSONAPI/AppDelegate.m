@@ -36,7 +36,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 - (void)setupRealm {
   RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
-  BOOL isTesting = [[[NSProcessInfo processInfo] arguments] containsObject:@"-XCTest"];
+  BOOL isTesting = [[[NSProcessInfo processInfo] environment] objectForKey:@"XCInjectBundle"];
   if (isTesting) {
     config.inMemoryIdentifier = @"inMemoryRealm";
   } else {
