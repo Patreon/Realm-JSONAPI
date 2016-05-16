@@ -22,13 +22,9 @@
 		7588261F1CE96CBD008B546A /* canonical-fixutre.json in Resources */ = {isa = PBXBuildFile; fileRef = 7588261E1CE96CBD008B546A /* canonical-fixutre.json */; };
 		758826201CE96CBD008B546A /* canonical-fixutre.json in Resources */ = {isa = PBXBuildFile; fileRef = 7588261E1CE96CBD008B546A /* canonical-fixutre.json */; };
 		758826241CE96D01008B546A /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 758826231CE96D01008B546A /* Article.m */; };
-		758826251CE96D01008B546A /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 758826231CE96D01008B546A /* Article.m */; };
 		758826281CE96D0F008B546A /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 758826271CE96D0F008B546A /* Person.m */; };
-		758826291CE96D0F008B546A /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 758826271CE96D0F008B546A /* Person.m */; };
 		7588262C1CE96D24008B546A /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7588262B1CE96D24008B546A /* Comment.m */; };
-		7588262D1CE96D24008B546A /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7588262B1CE96D24008B546A /* Comment.m */; };
 		758826301CE97365008B546A /* Fixtures.m in Sources */ = {isa = PBXBuildFile; fileRef = 7588262F1CE97365008B546A /* Fixtures.m */; };
-		758826311CE97365008B546A /* Fixtures.m in Sources */ = {isa = PBXBuildFile; fileRef = 7588262F1CE97365008B546A /* Fixtures.m */; };
 		758826341CE97DCF008B546A /* CanonicalExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 758826321CE97DCF008B546A /* CanonicalExample.m */; };
 		9E0A371F0194AD8A42A65408 /* Pods_RLMObject_JSONAPI_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C7D172488A0C829885F56A /* Pods_RLMObject_JSONAPI_Example.framework */; };
 		E2B76406BDAD7BE161C4C4D4 /* Pods_RLMObject_JSONAPI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F53F810F6E549E31077BBC /* Pods_RLMObject_JSONAPI_Tests.framework */; };
@@ -451,10 +447,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				758826311CE97365008B546A /* Fixtures.m in Sources */,
-				758826291CE96D0F008B546A /* Person.m in Sources */,
-				758826251CE96D01008B546A /* Article.m in Sources */,
-				7588262D1CE96D24008B546A /* Comment.m in Sources */,
 				758826341CE97DCF008B546A /* CanonicalExample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

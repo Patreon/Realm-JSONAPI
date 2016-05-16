@@ -35,17 +35,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 }
 
 - (void)setupRealm {
+  RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
   BOOL isTesting = [[[NSProcessInfo processInfo] arguments] containsObject:@"-XCTest"];
   if (isTesting) {
-    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *filePath = [documentsPath stringByAppendingPathComponent:@"test.realm"];
-    [[NSFileManager defaultManager] createFileAtPath:filePath
-                                            contents:[NSData data]
-                                          attributes:nil];
-    RLMRealmConfiguration *conf = [RLMRealmConfiguration defaultConfiguration];
-    conf.fileURL = [NSURL URLWithString:filePath];
-    [RLMRealmConfiguration setDefaultConfiguration:conf];
+    config.inMemoryIdentifier = @"inMemoryRealm";
+  } else {
+    config.schemaVersion = 1; // swap with the below to persist to disk
   }
+  [RLMRealmConfiguration setDefaultConfiguration:config];
 }
 
 @end
