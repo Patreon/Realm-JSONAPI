@@ -12,15 +12,24 @@
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
-		6003F59E195388D20070C39A /* PTRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* PTRAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* PTRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* PTRViewController.m */; };
+		6003F59E195388D20070C39A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* AppDelegate.m */; };
+		6003F5A7195388D20070C39A /* ArticleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* ArticleListController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
-		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		7588261F1CE96CBD008B546A /* canonical-fixutre.json in Resources */ = {isa = PBXBuildFile; fileRef = 7588261E1CE96CBD008B546A /* canonical-fixutre.json */; };
+		758826201CE96CBD008B546A /* canonical-fixutre.json in Resources */ = {isa = PBXBuildFile; fileRef = 7588261E1CE96CBD008B546A /* canonical-fixutre.json */; };
+		758826241CE96D01008B546A /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 758826231CE96D01008B546A /* Article.m */; };
+		758826251CE96D01008B546A /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 758826231CE96D01008B546A /* Article.m */; };
+		758826281CE96D0F008B546A /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 758826271CE96D0F008B546A /* Person.m */; };
+		758826291CE96D0F008B546A /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 758826271CE96D0F008B546A /* Person.m */; };
+		7588262C1CE96D24008B546A /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7588262B1CE96D24008B546A /* Comment.m */; };
+		7588262D1CE96D24008B546A /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7588262B1CE96D24008B546A /* Comment.m */; };
+		758826301CE97365008B546A /* Fixtures.m in Sources */ = {isa = PBXBuildFile; fileRef = 7588262F1CE97365008B546A /* Fixtures.m */; };
+		758826311CE97365008B546A /* Fixtures.m in Sources */ = {isa = PBXBuildFile; fileRef = 7588262F1CE97365008B546A /* Fixtures.m */; };
+		758826341CE97DCF008B546A /* CanonicalExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 758826321CE97DCF008B546A /* CanonicalExample.m */; };
 		9E0A371F0194AD8A42A65408 /* Pods_RLMObject_JSONAPI_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C7D172488A0C829885F56A /* Pods_RLMObject_JSONAPI_Example.framework */; };
 		E2B76406BDAD7BE161C4C4D4 /* Pods_RLMObject_JSONAPI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F53F810F6E549E31077BBC /* Pods_RLMObject_JSONAPI_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -49,20 +58,28 @@
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6003F59B195388D20070C39A /* RLMObject-JSONAPI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RLMObject-JSONAPI-Prefix.pch"; sourceTree = "<group>"; };
-		6003F59C195388D20070C39A /* PTRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTRAppDelegate.h; sourceTree = "<group>"; };
-		6003F59D195388D20070C39A /* PTRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTRAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* PTRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTRViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* PTRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTRViewController.m; sourceTree = "<group>"; };
+		6003F59C195388D20070C39A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6003F59D195388D20070C39A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6003F5A5195388D20070C39A /* ArticleListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleListController.h; sourceTree = "<group>"; };
+		6003F5A6195388D20070C39A /* ArticleListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleListController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* RLMObject-JSONAPI_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RLMObject-JSONAPI_Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		7588261E1CE96CBD008B546A /* canonical-fixutre.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "canonical-fixutre.json"; sourceTree = "<group>"; };
+		758826221CE96D01008B546A /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
+		758826231CE96D01008B546A /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
+		758826261CE96D0F008B546A /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		758826271CE96D0F008B546A /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		7588262A1CE96D24008B546A /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		7588262B1CE96D24008B546A /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		7588262E1CE97365008B546A /* Fixtures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fixtures.h; sourceTree = "<group>"; };
+		7588262F1CE97365008B546A /* Fixtures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fixtures.m; sourceTree = "<group>"; };
+		758826321CE97DCF008B546A /* CanonicalExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanonicalExample.m; sourceTree = "<group>"; };
 		77F53F810F6E549E31077BBC /* Pods_RLMObject_JSONAPI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RLMObject_JSONAPI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872FFF7E14064BE09DB3BC0E /* Pods-RLMObject-JSONAPI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLMObject-JSONAPI_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RLMObject-JSONAPI_Example/Pods-RLMObject-JSONAPI_Example.release.xcconfig"; sourceTree = "<group>"; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CE43E18AFDF8E97769755329 /* Pods-RLMObject-JSONAPI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLMObject-JSONAPI_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RLMObject-JSONAPI_Tests/Pods-RLMObject-JSONAPI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D44017582D3E199FDD385702 /* Pods-RLMObject-JSONAPI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RLMObject-JSONAPI_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RLMObject-JSONAPI_Example/Pods-RLMObject-JSONAPI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DAF69941C26A76201BA2D6F9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -132,11 +149,12 @@
 		6003F593195388D20070C39A /* Example for RLMObject-JSONAPI */ = {
 			isa = PBXGroup;
 			children = (
-				6003F59C195388D20070C39A /* PTRAppDelegate.h */,
-				6003F59D195388D20070C39A /* PTRAppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* PTRViewController.h */,
-				6003F5A6195388D20070C39A /* PTRViewController.m */,
+				7588261D1CE96CBD008B546A /* Fixtures */,
+				758826211CE96CDE008B546A /* Models */,
+				6003F59C195388D20070C39A /* AppDelegate.h */,
+				6003F59D195388D20070C39A /* AppDelegate.m */,
+				6003F5A5195388D20070C39A /* ArticleListController.h */,
+				6003F5A6195388D20070C39A /* ArticleListController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -158,7 +176,7 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6003F5BB195388D20070C39A /* Tests.m */,
+				758826321CE97DCF008B546A /* CanonicalExample.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
@@ -182,6 +200,30 @@
 				439A7383A4F1E166A58E3F76 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		7588261D1CE96CBD008B546A /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				7588261E1CE96CBD008B546A /* canonical-fixutre.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		758826211CE96CDE008B546A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				758826221CE96D01008B546A /* Article.h */,
+				758826231CE96D01008B546A /* Article.m */,
+				758826261CE96D0F008B546A /* Person.h */,
+				758826271CE96D0F008B546A /* Person.m */,
+				7588262A1CE96D24008B546A /* Comment.h */,
+				7588262B1CE96D24008B546A /* Comment.m */,
+				7588262E1CE97365008B546A /* Fixtures.h */,
+				7588262F1CE97365008B546A /* Fixtures.m */,
+			);
+			name = Models;
+			path = Fixtures/Models;
 			sourceTree = "<group>";
 		};
 		C59C9513358FEBD323E699DC /* Pods */ = {
@@ -280,7 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				7588261F1CE96CBD008B546A /* canonical-fixutre.json in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -291,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */,
+				758826201CE96CBD008B546A /* canonical-fixutre.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,8 +437,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F59E195388D20070C39A /* PTRAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* PTRViewController.m in Sources */,
+				758826241CE96D01008B546A /* Article.m in Sources */,
+				7588262C1CE96D24008B546A /* Comment.m in Sources */,
+				6003F59E195388D20070C39A /* AppDelegate.m in Sources */,
+				758826301CE97365008B546A /* Fixtures.m in Sources */,
+				758826281CE96D0F008B546A /* Person.m in Sources */,
+				6003F5A7195388D20070C39A /* ArticleListController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,7 +451,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F5BC195388D20070C39A /* Tests.m in Sources */,
+				758826311CE97365008B546A /* Fixtures.m in Sources */,
+				758826291CE96D0F008B546A /* Person.m in Sources */,
+				758826251CE96D01008B546A /* Article.m in Sources */,
+				7588262D1CE96D24008B546A /* Comment.m in Sources */,
+				758826341CE97DCF008B546A /* CanonicalExample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
