@@ -1,10 +1,10 @@
 platform :ios, '8.0'
 use_frameworks!
 
-target 'RLMObject-JSONAPI_Example' do
-  pod 'RLMObject-JSONAPI', :path => '../'
+target 'Realm-JSONAPI_Example' do
+  pod 'Realm-JSONAPI', :path => '../'
 
-  target 'RLMObject-JSONAPI_Tests' do
+  target 'Realm-JSONAPI_Tests' do
     inherit! :search_paths
 
     pod 'Specta'

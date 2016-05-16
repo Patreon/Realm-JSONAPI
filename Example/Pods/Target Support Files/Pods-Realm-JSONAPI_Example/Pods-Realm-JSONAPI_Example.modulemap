@@ -1,0 +1,6 @@
+framework module Pods_Realm_JSONAPI_Example {
+  umbrella header "Pods-Realm-JSONAPI_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

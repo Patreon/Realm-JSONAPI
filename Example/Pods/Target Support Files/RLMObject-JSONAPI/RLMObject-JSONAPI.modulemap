@@ -1,6 +1,0 @@
-framework module RLMObject_JSONAPI {
-  umbrella header "RLMObject-JSONAPI-umbrella.h"
-
-  export *
-  module * { export * }
-}

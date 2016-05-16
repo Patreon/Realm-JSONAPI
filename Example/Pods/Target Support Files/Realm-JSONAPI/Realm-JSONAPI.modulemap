@@ -1,0 +1,6 @@
+framework module Realm_JSONAPI {
+  umbrella header "Realm-JSONAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}
