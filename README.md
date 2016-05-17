@@ -1,6 +1,6 @@
 # Realm-JSONAPI
 
-[![CI Status](http://img.shields.io/travis/Patreon/Realm-JSONAPI.svg?style=flat)](https://travis-ci.org/Patreon/Realm-JSONAPI)
+[![CI Status](https://circleci.com/gh/Patreon/Realm-JSONAPI.svg?style=shield&circle-token=2b02da6debbb70cf4841a3b40d39202baef2deb7)](https://circleci.com/gh/Patreon/Realm-JSONAPI)
 [![Version](https://img.shields.io/cocoapods/v/Realm-JSONAPI.svg?style=flat)](http://cocoapods.org/pods/Realm-JSONAPI)
 [![License](https://img.shields.io/cocoapods/l/Realm-JSONAPI.svg?style=flat)](http://cocoapods.org/pods/Realm-JSONAPI)
 [![Platform](https://img.shields.io/cocoapods/p/Realm-JSONAPI.svg?style=flat)](http://cocoapods.org/pods/Realm-JSONAPI)
