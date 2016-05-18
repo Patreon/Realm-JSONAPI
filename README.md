@@ -70,7 +70,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 + (void)fetchUser:(NSString *)uid {
     NSString *baseURL = [NSString stringWithFormat:@"users/%@", uid];
     [APICall queueWithURL:[[self class] defaultURLDecoration:baseURL]
-                   params:[self toJSON]
+                   params:nil
                    method:HttpMethodGET
               andCallback:callback];
 }
