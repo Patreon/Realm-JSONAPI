@@ -20,11 +20,10 @@ Easily integrate your [Realm](http://realm.io) models with a [JSON:API](http://j
 ## Usage
 
 1. Define a [Realm](http://realm.io) model
-2. `#import <Realm_JSONAPI/RLMObject+JSONAPI.h>`
-3. Define `JSONtoModelMap` (and we recommend `defaultAttributes` and `defaultRelationships` as well)
-4. Register the model early in the application's lifecycle via `[[JSONAPIResourceRegistry sharedInstance] bindJSONType:@"your-model-type" toClass:[Model class]]`
-5. Parse server responses with `[JSONAPIParserUtilities putJSON:serverResponseDict inRealm:[RLMRealm defaultRealm]]`
-6. Serialize your model to JSON with `[model toJSON]` and send it to the server
+2. Define `JSONtoModelMap` (and we recommend `defaultAttributes` and `defaultRelationships` as well)
+3. Register the model early in the application's lifecycle via `[[JSONAPIResourceRegistry sharedInstance] bindJSONType:@"your-model-type" toClass:[Model class]]`
+4. Parse server responses with `[JSONAPIParserUtilities putJSON:serverResponseDict inRealm:[RLMRealm defaultRealm]]`
+5. Serialize your model to JSON with `[model toJSON]` (made accessible via `#import <Realm_JSONAPI/RLMObject+JSONAPI.h>`) and send it to the server
 
 
 ## Example
