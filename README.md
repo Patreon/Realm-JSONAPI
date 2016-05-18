@@ -15,6 +15,7 @@ Easily integrate your [Realm](http://realm.io) models with a [JSON:API](http://j
 4. [Installation](#installation)
 5. [Author](#author)
 6. [License](#license)
+7. [Contributing](#contributing)
 
 
 ## Usage
@@ -84,9 +85,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 }
 ```
 
+
 ## Requirements
 
 [Realm](http://realm.io) and a [JSON:API](http://jsonapi.org)-compliant server
+
 
 ## Installation
 
@@ -97,10 +100,25 @@ it, simply add the following line to your Podfile:
 pod "Realm-JSONAPI"
 ```
 
+
 ## Author
 
 David Kettler, david@patreon.com
 
+
 ## License
 
 Realm-JSONAPI is available under the Apache 2.0 license. See the LICENSE file for more info.
+
+
+## Contributing
+
+1. `git clone git@github.com:Patreon/Realm-JSONAPI.git`
+2. `cd Realm-JSONAPI`
+3. `git checkout -b my-meaningful-improvements`
+4. Write beautiful code that improves the project, creating or modifying tests to prove correctness.
+5. Commit said code and tests in a well-organized way.
+6. Confirm tests pass by opening `Example/Realm-JSONAPI.xcworkspace` and running tests with `Cmd+U` (you may need to `cd Example && pod install` first)
+7. `git push origin my-meaningful-improvements`
+8. Open a pull request (`hub pull-request`, if you have [`hub`](https://github.com/github/hub))
+9. Have a chill discussion with the community about how to best integrate your improvements into mainline deployments
