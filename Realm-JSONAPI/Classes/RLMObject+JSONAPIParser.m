@@ -160,7 +160,7 @@
 
 // TODO: construct the json on a bg thread, then put in realm on the main thread
 + (instancetype)createInDefaultRealmWithJSON:(NSDictionary *)json {
-  return [self createInDefaultRealmWithValue:[self mapJSONToModel:json withRealm:[RLMRealm defaultRealm]]];
+  return [self createInRealm:[RLMRealm defaultRealm] withJSON:json];
 }
 
 + (instancetype)createInRealm:(RLMRealm *)realm withJSON:(NSDictionary *)json {
@@ -168,7 +168,7 @@
 }
 
 + (instancetype)createOrUpdateInDefaultRealmWithJSON:(NSDictionary *)json {
-  return [self createOrUpdateInDefaultRealmWithValue:[self mapJSONToModel:json withRealm:[RLMRealm defaultRealm]]];
+  return [self createOrUpdateInRealm:[RLMRealm defaultRealm] withJSON:json];
 }
 
 + (instancetype)createOrUpdateInRealm:(RLMRealm *)realm withJSON:(NSDictionary *)json {
