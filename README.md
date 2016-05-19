@@ -11,11 +11,12 @@ Easily integrate your [Realm](http://realm.io) models with a [JSON:API](http://j
 
 1. [Usage](#usage)
 2. [Example](#example)
-3. [Requirements](#requirements)
-4. [Installation](#installation)
-5. [Author](#author)
-6. [License](#license)
-7. [Contributing](#contributing)
+3. [Documentation](#documentation)
+4. [Requirements](#requirements)
+5. [Installation](#installation)
+6. [Author](#author)
+7. [License](#license)
+8. [Contributing](#contributing)
 
 
 ## Usage
@@ -84,6 +85,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
               andCallback:callback];
 }
 ```
+
+
+## Documentation
+
+You can read the full docs at [http://cocoadocs.org/docsets/Realm-JSONAPI](http://cocoadocs.org/docsets/Realm-JSONAPI)
 
 
 ## Requirements
