@@ -22,15 +22,24 @@ Easily integrate your [Realm](http://realm.io) models with a [JSON:API](http://j
 ## Usage
 
 1. Define a [Realm](http://realm.io) model
-2. Define `JSONtoModelMap` (and we recommend `defaultAttributes` and `defaultRelationships` as well)
-3. Register the model early in the application's lifecycle via `[[JSONAPIResourceRegistry sharedInstance] bindJSONType:@"your-model-type" toClass:[Model class]]`
-4. Parse server responses with `[JSONAPIParserUtilities putJSON:serverResponseDict inRealm:[RLMRealm defaultRealm]]`
+2. Define `JSONtoModelMap` (and we strongly recommend `defaultAttributes` and `defaultRelationships` as well)
+3. Register the model early in the application's lifecycle via
+
+    ```[[JSONAPIResourceRegistry sharedInstance] bindJSONType:@"your-model-type" toClass:[Model class]]```
+4. Parse server responses with
+
+    ```[JSONAPIParserUtilities putJSON:serverResponseDict inRealm:[RLMRealm defaultRealm]]```
 5. Serialize your model to JSON with `[model toJSON]` (made accessible via `#import <Realm_JSONAPI/RLMObject+JSONAPI.h>`) and send it to the server
 
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Try out a full example project with
+```
+pod try Realm-JSONAPI
+```
+
+Typical usage in a single RLMObject subclass file looks something like this:
 
 ```objective-c
 #import <Realm_JSONAPI/RLMObject+JSONAPI.h>
@@ -77,7 +86,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
               andCallback:callback];
 }
 
-- (void)postWithCallback:(APICompletionBlock)callback {
+- (void)patchWithCallback:(APICompletionBlock)callback {
     NSString *baseURL = [NSString stringWithFormat:@"users/%@", self.uid];
     [APICall queueWithURL:[[self class] defaultURLDecoration:baseURL]
                    params:[self toJSON]
