@@ -27,14 +27,9 @@ static NSString *urlEncode(id object) {
   return string;
 }
 
-@implementation NSDictionary (UrlEncoding)
+@implementation NSDictionary (URLEncoding)
 
 - (NSString *)urlEncodedString
-{
-  return [self urlEncodedString:NO];
-}
-
-- (NSString *)urlEncodedString:(BOOL)preserveBrackets
 {
   NSMutableArray *parts = [NSMutableArray array];
   for (id key in self) {
@@ -42,15 +37,7 @@ static NSString *urlEncode(id object) {
     NSString *part = [NSString stringWithFormat:@"%@=%@",
                       urlEncode([NSString stringWithFormat:@"%@", key]),
                       urlEncode(value)];
-    if (preserveBrackets) {
-      NSString *first = [part stringByReplacingOccurrencesOfString:@"%5B"
-                                                        withString:@"["];
-      NSString *second = [first stringByReplacingOccurrencesOfString:@"%5D"
-                                                          withString:@"]"];
-      [parts addObject:second];
-    } else {
-      [parts addObject:part];
-    }
+    [parts addObject:part];
   }
   return [parts componentsJoinedByString:@"&"];
 }
