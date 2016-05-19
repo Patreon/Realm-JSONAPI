@@ -1,0 +1,14 @@
+highlight-font: '"Lato", "Open Sans", sans-serif'
+
+body: '"Lato", "Open Sans", sans-serif'
+code: '"Menlo", "Monaco", "Consolas", "Courier New", monospace'
+
+highlight-color: '#1D9BDB'
+highlight-dark-color: '#1D9BDB'
+
+darker-color: '#566870'
+darker-dark-color: '#232D32'
+
+background-color: '#E8ECED'
+alt-link-color: '#e6461a'
+warning-color: '#FEF4F1'
