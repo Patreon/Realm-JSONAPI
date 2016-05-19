@@ -7,16 +7,20 @@
 @interface NSDate (ISO8601)
 
 /**
- * @return An NSDate instance matching an [ISO8601](https://en.wikipedia.org/wiki/ISO_8601)-formatted string.
+ * @return An NSDate instance matching an ISO8601-formatted string.
  * Corresponds to a NSDateFormatter formatString of "yyyy-MM-dd'T'HH:mm:ssZ",
  * but the implementation here uses strptime in C directly for big speed wins.
+ *
+ * @see https://en.wikipedia.org/wiki/ISO_8601
  */
 + (NSDate *)dateFromISO8601String:(NSString *)string;
 
 /**
- * @return an NSString representing the current NSDate as an [ISO8601](https://en.wikipedia.org/wiki/ISO_8601)-formatted string.
+ * @return an NSString representing the current NSDate as an ISO8601-formatted string.
  * Corresponds to a NSDateFormatter formatString of "yyyy-MM-dd'T'HH:mm:ssZ"
  * but the implementation here uses strftime in C directly for big speed wins.
+ *
+ * @see https://en.wikipedia.org/wiki/ISO_8601
  */
 - (NSString *)ISO8601String;
 

@@ -16,8 +16,8 @@
  * with the sparse fieldset and included resource query parameters.
  *
  * @see [JSONAPIURLUtilities specifiedURLForBareURL:withIncludes:andFields:]
- * @see http://jsonapi.org/format/#fetching-includes JSON:API docs on Inclusion of Related Resources.
- * @see http://jsonapi.org/format/#fetching-sparse-fieldsets JSON:API docs on Sparse Fieldsets
+ * @see [http://jsonapi.org/format#fetching-includes](http://jsonapi.org/format#fetching-includes) JSON:API docs on Inclusion of Related Resources.
+ * @see [http://jsonapi.org/format#fetching-sparse-fieldsets](http://jsonapi.org/format#fetching-sparse-fieldsets) JSON:API docs on Sparse Fieldsets
  */
 + (NSString *)defaultURLDecoration:(NSString *)bareURL;
 
