@@ -25,26 +25,6 @@
 + (NSString *)type;
 
 /**
- * This method should be overridden on your RLMObject subclasses to assist Realm-JSONAPI's server communication
- * (specifically the JSONAPIURLUtilities methods, which you invoke by hand as desired).
- *
- * @return An NSArray that lists the attributes which you wish to request from the server
- *
- * @see http://jsonapi.org/format/#fetching-sparse-fieldsets
- */
-+ (NSArray *)defaultAttributes;
-
-/**
- * This method should be overridden on your RLMObject subclasses to assist Realm-JSONAPI's server communication
- * (specifically the JSONAPIURLUtilities methods, which you invoke by hand as desired).
- *
- * @return An NSArray that lists the related objects which you wish to request from the server
- *
- * @see http://jsonapi.org/format/#fetching-sparse-fieldsets
- */
-+ (NSArray *)defaultRelationships;
-
-/**
  * The RLMObject subclass which represents relationships known to this class by the provided relationshipKey
  *
  * @param relationshipKey The string by which an JSON:API Resource Object will know a given relationship.

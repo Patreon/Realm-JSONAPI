@@ -4,6 +4,14 @@
 
 @implementation RLMObject (JSONAPIURL)
 
++ (NSArray *)defaultAttributes {
+  return nil;
+}
+
++ (NSArray *)defaultRelationships {
+  return nil;
+}
+
 + (NSDictionary *)defaultAttributesAsFieldsDictionary {
   NSArray *defaultAttributes = [self defaultAttributes];
   if (defaultAttributes != nil) {

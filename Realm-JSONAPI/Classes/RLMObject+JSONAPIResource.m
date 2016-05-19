@@ -16,14 +16,6 @@
   return type;
 }
 
-+ (NSArray *)defaultAttributes {
-  return nil;
-}
-
-+ (NSArray *)defaultRelationships {
-  return nil;
-}
-
 + (Class)classForRelationship:(NSString *)relationshipKey {
   NSDictionary *map = [self JSONtoModelMap];
   RLMSchema *schema = [RLMRealm defaultRealm].schema;

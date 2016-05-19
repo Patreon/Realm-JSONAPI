@@ -3,6 +3,35 @@
 @interface RLMObject (JSONAPIURL)
 
 /**
+ * These attributes are converted, along with the relationships in defaultRelationships, into
+ * sparse fieldset and included resource query parameters and appended as query parameters to API request URLs.
+ * By specifying the attributes you wish to request,
+ * it allows your server to change its defaults without breaking clients.
+ * By explicitly requesting what you want, you make the server not have to guess.
+ *
+ * @return An NSArray that lists the attributes which you wish to request by default from the server
+ *
+ * @see -defaultURLDecoration:
+ * @see +defaultAttributesAsFieldsDictionary
+ * @see http://jsonapi.org/format#fetching-sparse-fieldsets JSON:API docs on Sparse Fieldsets
+ */
++ (NSArray *)defaultAttributes;
+
+/**
+ * These relationships are converted, along with the attributes in defaultAttributes, into
+ * sparse fieldset and included resource query parameters and appended as query parameters to API request URLs.
+ * By specifying the attributes you wish to request,
+ * it allows your server to change its defaults without breaking clients.
+ * By explicitly requesting what you want, you make the server not have to guess.
+ *
+ * @return An NSArray that lists the relationships which you wish to request by default from the server
+ *
+ * @see -defaultURLDecoration:
+ * @see http://jsonapi.org/format#fetching-includes JSON:API docs on Inclusion of Related Resources
+ */
++ (NSArray *)defaultRelationships;
+
+/**
  * Turns the defaultAttributes and defaultRelationships of this object into
  * sparse fieldset and included resource query parameters,
  * and appends those query parameters to the provided string.
