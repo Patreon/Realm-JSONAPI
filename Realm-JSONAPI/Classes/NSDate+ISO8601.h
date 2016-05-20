@@ -2,7 +2,7 @@
 
 /**
  * A class that makes it very easy to move between NSDates and ISO8601-formatted strings.
- * Uses strptime and strftime under the hood for performance gains.
+ * Uses strptime and strftime from C's time.h lib under the hood for performance gains.
  */
 @interface NSDate (ISO8601)
 

@@ -1,5 +1,11 @@
 #import <Foundation/Foundation.h>
 
+/**
+ * A two-way lookup for JSON:API type strings and their corresponding RLMObject classes.
+ * You should use bindJSONType:toClass: as early as possible in your application's lifecycle,
+ * certainly before you do any serialization or parsing,
+ * as those processes use this registry to look up the appropriate classes to use for their work.
+ */
 @interface JSONAPIResourceRegistry : NSObject
 
 /**

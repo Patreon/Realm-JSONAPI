@@ -1,6 +1,9 @@
 // Inspired by http://blog.ablepear.com/2008/12/urlencoding-category-for-nsdictionary.html
 #import <Foundation/Foundation.h>
 
+/**
+ * Transform a dictionary of keys and values into a query parameter string worthy of appending to any URL.
+ */
 @interface NSDictionary (URLEncoding)
 
 /**

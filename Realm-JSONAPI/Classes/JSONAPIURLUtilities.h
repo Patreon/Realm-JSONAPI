@@ -1,5 +1,12 @@
 #import <Foundation/Foundation.h>
 
+/**
+ * Use this class to specify exactly what information you want the server to return.
+ * By explicitly requesting what you want, you make the server not have to guess.
+ * As such, you should use this method on all of your API requests,
+ * as it allows your server to change its defaults without breaking clients.
+ * This makes versioning a breeze!
+ */
 @interface JSONAPIURLUtilities : NSObject
 
 /**

@@ -1,6 +1,10 @@
 #import <Foundation/Foundation.h>
 #import <Realm/RLMRealm.h>
 
+/**
+ * The primary entry point for parsing server responses.
+ * Takes in a server response, and puts the corresponding objects in the realm
+ */
 @interface JSONAPIParserUtilities : NSObject
 
 /**

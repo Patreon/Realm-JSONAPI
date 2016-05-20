@@ -1,5 +1,13 @@
 #import <Realm/Realm.h>
 
+/**
+ * This category handles parsing JSON:API server responses into RLMObjects.
+ * It is typically not used directly, but rather invoked by JSONAPIParserUtilities.
+ * It is also typically not ever imported directly, but rather rides along with RLMObject+JSONAPI
+ *
+ * @see JSONAPIParserUtilities
+ * @see RLMObject+JSONAPI
+ */
 @interface RLMObject (JSONAPIParser)
 
 /**

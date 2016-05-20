@@ -1,5 +1,14 @@
 #import <Realm/Realm.h>
 
+/**
+ * This category handles serializing RLMObjects into JSON:API documents worthy of sending to your server.
+ * You can use `toJSON` to serialize just this RLMObject,
+ * or you can use `toJSONWithIncludedTypes:` to include related resources.
+ * This category is typically not ever imported directly, but rather rides along with RLMObject+JSONAPI
+ *
+ * @see JSONAPIParserUtilities
+ * @see RLMObject+JSONAPI
+ */
 @interface RLMObject (JSONAPISerializer)
 
 /**

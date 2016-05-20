@@ -1,5 +1,20 @@
 #import <Realm/Realm.h>
 
+/**
+ * This category handles decorating URLs with standard JSON:API query parameters.
+ * In most cases, you should override `defaultAttributes` and `defaultRelationships`
+ * to specify what your app expects to receive from the server in most cases.
+ * Then, you can use `defaultURLDecoration:` to decorate a URL with the query parameters
+ * needed to specify those desired attributes and relationships to the server.
+ *
+ * By explicitly requesting what you want, you make the server not have to guess.
+ * This makes versioning a breeze, as it allows your server to change its defaults without breaking clients.
+ *
+ * If you want to break out of your defaults, you can use `fieldsIncludingRelationships:`
+ * and modify its contents, then use `JSONAPIURLUtilities` to decorate your URL more manually.
+ *
+ * @see JSONAPIURLUtilities
+ */
 @interface RLMObject (JSONAPIURL)
 
 /**

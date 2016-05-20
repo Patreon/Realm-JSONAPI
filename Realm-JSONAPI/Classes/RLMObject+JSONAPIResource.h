@@ -1,5 +1,15 @@
 #import <Realm/Realm.h>
 
+/**
+ * This category defines the primary schema by which Realm-JSONAPI does its work:
+ * a way to translate between JSON:API Resource Objects and RLMObjects.
+ * You should make sure to override `JSONtoModelMap` on your RLMObjects,
+ * but you should not need to mess with `type` or `classForRelationship`.
+ * This category is also typically not ever imported directly, but rather rides along with RLMObject+JSONAPI.
+ *
+ * @see JSONtoModelMap
+ * @see RLMObject+JSONAPI
+ */
 @interface RLMObject (JSONAPIResource)
 
 /**
@@ -17,10 +27,13 @@
 + (NSDictionary *)JSONtoModelMap;
 
 /**
- * This method should be overridden on your RLMObject subclasses
- * to assist Realm-JSONAPI's parsing and serialization.
+ * This method uses the JSONAPIResourceRegistry to look up this class's type string.
+ * As such, you should not need to override it yourself,
+ * just make sure to always register your classes
  * 
  * @return An NSString that defines the JSON:API type key which refers to the same resource which this RLMObject represents.
+ *
+ * @see JSONAPIResourceRegistry
  */
 + (NSString *)type;
 
