@@ -11,9 +11,9 @@
  *
  * @return An NSArray that lists the attributes which you wish to request by default from the server
  *
- * @see -defaultURLDecoration:
+ * @see +defaultURLDecoration:
  * @see +defaultAttributesAsFieldsDictionary
- * @see http://jsonapi.org/format#fetching-sparse-fieldsets JSON:API docs on Sparse Fieldsets
+ * @see [http://jsonapi.org/format#fetching-sparse-fieldsets](http://jsonapi.org/format#fetching-sparse-fieldsets) JSON:API docs on Sparse Fieldsets
  */
 + (NSArray *)defaultAttributes;
 
@@ -26,8 +26,8 @@
  *
  * @return An NSArray that lists the relationships which you wish to request by default from the server
  *
- * @see -defaultURLDecoration:
- * @see http://jsonapi.org/format#fetching-includes JSON:API docs on Inclusion of Related Resources
+ * @see +defaultURLDecoration:
+ * @see [http://jsonapi.org/format#fetching-includes](http://jsonapi.org/format#fetching-includes) JSON:API docs on Inclusion of Related Resources
  */
 + (NSArray *)defaultRelationships;
 
