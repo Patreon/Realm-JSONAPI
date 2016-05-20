@@ -1,6 +1,50 @@
 #import <Realm/Realm.h>
 
+/**
+ * This category handles decorating URLs with standard JSON:API query parameters.
+ * In most cases, you should override `defaultAttributes` and `defaultRelationships`
+ * to specify what your app expects to receive from the server in most cases.
+ * Then, you can use `defaultURLDecoration:` to decorate a URL with the query parameters
+ * needed to specify those desired attributes and relationships to the server.
+ *
+ * By explicitly requesting what you want, you make the server not have to guess.
+ * This makes versioning a breeze, as it allows your server to change its defaults without breaking clients.
+ *
+ * If you want to break out of your defaults, you can use `fieldsIncludingRelationships:`
+ * and modify its contents, then use `JSONAPIURLUtilities` to decorate your URL more manually.
+ *
+ * @see JSONAPIURLUtilities
+ */
 @interface RLMObject (JSONAPIURL)
+
+/**
+ * These attributes are converted, along with the relationships in defaultRelationships, into
+ * sparse fieldset and included resource query parameters and appended as query parameters to API request URLs.
+ * By specifying the attributes you wish to request,
+ * it allows your server to change its defaults without breaking clients.
+ * By explicitly requesting what you want, you make the server not have to guess.
+ *
+ * @return An NSArray that lists the attributes which you wish to request by default from the server
+ *
+ * @see +defaultURLDecoration:
+ * @see +defaultAttributesAsFieldsDictionary
+ * @see [http://jsonapi.org/format#fetching-sparse-fieldsets](http://jsonapi.org/format#fetching-sparse-fieldsets) JSON:API docs on Sparse Fieldsets
+ */
++ (NSArray *)defaultAttributes;
+
+/**
+ * These relationships are converted, along with the attributes in defaultAttributes, into
+ * sparse fieldset and included resource query parameters and appended as query parameters to API request URLs.
+ * By specifying the attributes you wish to request,
+ * it allows your server to change its defaults without breaking clients.
+ * By explicitly requesting what you want, you make the server not have to guess.
+ *
+ * @return An NSArray that lists the relationships which you wish to request by default from the server
+ *
+ * @see +defaultURLDecoration:
+ * @see [http://jsonapi.org/format#fetching-includes](http://jsonapi.org/format#fetching-includes) JSON:API docs on Inclusion of Related Resources
+ */
++ (NSArray *)defaultRelationships;
 
 /**
  * Turns the defaultAttributes and defaultRelationships of this object into
@@ -16,8 +60,8 @@
  * with the sparse fieldset and included resource query parameters.
  *
  * @see [JSONAPIURLUtilities specifiedURLForBareURL:withIncludes:andFields:]
- * @see http://jsonapi.org/format/#fetching-includes JSON:API docs on Inclusion of Related Resources.
- * @see http://jsonapi.org/format/#fetching-sparse-fieldsets JSON:API docs on Sparse Fieldsets
+ * @see [http://jsonapi.org/format#fetching-includes](http://jsonapi.org/format#fetching-includes) JSON:API docs on Inclusion of Related Resources.
+ * @see [http://jsonapi.org/format#fetching-sparse-fieldsets](http://jsonapi.org/format#fetching-sparse-fieldsets) JSON:API docs on Sparse Fieldsets
  */
 + (NSString *)defaultURLDecoration:(NSString *)bareURL;
 
