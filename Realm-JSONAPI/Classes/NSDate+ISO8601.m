@@ -22,10 +22,10 @@
   struct tm *timeinfo;
   char buffer[80];
 
-  time_t rawtime = [self timeIntervalSince1970] - [[NSTimeZone localTimeZone] secondsFromGMT];
-  timeinfo = localtime(&rawtime);
+  time_t rawtime = [self timeIntervalSince1970];
+  timeinfo = gmtime(&rawtime);
 
-  strftime(buffer, 80, "%Y-%m-%dT%H:%M:%S%z", timeinfo);
+  strftime(buffer, 80, "%Y-%m-%dT%H:%M:%SZ", timeinfo);
 
   return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
 }
