@@ -67,7 +67,7 @@
           [array addObject:linkage];
 
           if ([types containsObject:typeString]) {
-            [included addObject:[value toJSONWithIncludedTypes:types
+            [included addObject:[item toJSONWithIncludedTypes:types
                                                  inIncludedSet:included]];
           }
         }
