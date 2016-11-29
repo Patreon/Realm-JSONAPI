@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Realm-JSONAPI"
-  s.version          = "0.1.3"
+  s.version          = "0.1.4"
   s.summary          = "Easily integrate with a JSON-API compliant server"
 
 # This description is used to generate tags and improve search results.
@@ -39,5 +39,5 @@ JSON-API formatted data (http://jsonapi.org) and Realm objects (http://realm.io)
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'Realm', '~> 0.102.1'
+  s.dependency 'Realm', '~> 2.1.0'
 end
