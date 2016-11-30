@@ -38,7 +38,7 @@
 
 @implementation RLMArray {
 @public
-    // array for standalone
+    // Backing array when this instance is unmanaged
     NSMutableArray *_backingArray;
 }
 
@@ -72,7 +72,7 @@ static void changeArray(__unsafe_unretained RLMArray *const ar, NSKeyValueChange
     changeArray(ar, kind, f, [=] { return is; });
 }
 
-- (instancetype)initWithObjectClassName:(NSString *)objectClassName {
+- (instancetype)initWithObjectClassName:(__unsafe_unretained NSString *const)objectClassName {
     self = [super init];
     if (self) {
         _objectClassName = objectClassName;
@@ -129,7 +129,7 @@ static void changeArray(__unsafe_unretained RLMArray *const ar, NSKeyValueChange
 }
 
 //
-// Standalone RLMArray implementation
+// Unmanaged RLMArray implementation
 //
 
 static void RLMValidateMatchingObjectType(RLMArray *array, RLMObject *object) {
@@ -138,10 +138,11 @@ static void RLMValidateMatchingObjectType(RLMArray *array, RLMObject *object) {
     }
     if (!object->_objectSchema) {
         @throw RLMException(@"Object cannot be inserted unless the schema is initialized. "
-                            "This can happen if you try to insert objects into a RLMArray / List from a default value or from an overriden standalone initializer (`init()`).");
+                            "This can happen if you try to insert objects into a RLMArray / List from a default value or from an overriden unmanaged initializer (`init()`).");
     }
     if (![array->_objectClassName isEqualToString:object->_objectSchema.className]) {
-        @throw RLMException(@"Object type '%@' does not match RLMArray type '%@'.", object->_objectSchema.className, array->_objectClassName);
+        @throw RLMException(@"Object type '%@' does not match RLMArray type '%@'.",
+                            object->_objectSchema.className, array->_objectClassName);
     }
 }
 
@@ -312,7 +313,7 @@ static void RLMValidateArrayBounds(__unsafe_unretained RLMArray *const ar,
     }
     // Although delegating to valueForKeyPath: here would allow to support
     // nested key paths as well, limiting functionality gives consistency
-    // between standalone and persisted arrays.
+    // between unmanaged and managed arrays.
     if ([keyPath characterAtIndex:0] == '@') {
         NSRange operatorRange = [keyPath rangeOfString:@"." options:NSLiteralSearch];
         if (operatorRange.location != NSNotFound) {
@@ -327,7 +328,7 @@ static void RLMValidateArrayBounds(__unsafe_unretained RLMArray *const ar,
 
 - (id)valueForKey:(NSString *)key {
     if ([key isEqualToString:RLMInvalidatedKey]) {
-        return @NO; // Standalone arrays are never invalidated
+        return @NO; // Unmanaged arrays are never invalidated
     }
     if (!_backingArray) {
         return @[];
@@ -361,7 +362,7 @@ static void RLMValidateArrayBounds(__unsafe_unretained RLMArray *const ar,
 }
 
 //
-// Methods unsupported on standalone RLMArray instances
+// Methods unsupported on unmanaged RLMArray instances
 //
 
 #pragma clang diagnostic push
@@ -369,7 +370,7 @@ static void RLMValidateArrayBounds(__unsafe_unretained RLMArray *const ar,
 
 - (RLMResults *)objectsWithPredicate:(NSPredicate *)predicate
 {
-    @throw RLMException(@"This method can only be called on RLMArray instances retrieved from an RLMRealm");
+    @throw RLMException(@"This method may only be called on RLMArray instances retrieved from an RLMRealm");
 }
 
 - (RLMResults *)sortedResultsUsingProperty:(NSString *)property ascending:(BOOL)ascending
@@ -377,9 +378,9 @@ static void RLMValidateArrayBounds(__unsafe_unretained RLMArray *const ar,
     return [self sortedResultsUsingDescriptors:@[[RLMSortDescriptor sortDescriptorWithProperty:property ascending:ascending]]];
 }
 
-- (RLMResults *)sortedResultsUsingDescriptors:(NSArray *)properties
+- (RLMResults *)sortedResultsUsingDescriptors:(NSArray<RLMSortDescriptor *> *)properties
 {
-    @throw RLMException(@"This method can only be called on RLMArray instances retrieved from an RLMRealm");
+    @throw RLMException(@"This method may only be called on RLMArray instances retrieved from an RLMRealm");
 }
 
 // The compiler complains about the method's argument type not matching due to
@@ -388,7 +389,7 @@ static void RLMValidateArrayBounds(__unsafe_unretained RLMArray *const ar,
 // http://www.openradar.me/radar?id=6135653276319744
 #pragma clang diagnostic ignored "-Wmismatched-parameter-types"
 - (RLMNotificationToken *)addNotificationBlock:(void (^)(RLMArray *, RLMCollectionChange *, NSError *))block {
-    @throw RLMException(@"This method can only be called on RLMArray instances retrieved from an RLMRealm");
+    @throw RLMException(@"This method may only be called on RLMArray instances retrieved from an RLMRealm");
 }
 #pragma clang diagnostic pop
 

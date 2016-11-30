@@ -1,6 +1,6 @@
 {
   "name": "Realm-JSONAPI",
-  "version": "0.0.1",
+  "version": "0.1.4",
   "summary": "Easily integrate with a JSON-API compliant server",
   "description": "Realm-JSONAPI provides a set of utilities to easily move between\nJSON-API formatted data (http://jsonapi.org) and Realm objects (http://realm.io).",
   "homepage": "https://github.com/Patreon/Realm-JSONAPI",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/Patreon/Realm-JSONAPI.git",
-    "tag": "0.0.1"
+    "tag": "0.1.4"
   },
   "platforms": {
     "ios": "7.0"
@@ -21,7 +21,7 @@
   "source_files": "Realm-JSONAPI/Classes/**/*",
   "dependencies": {
     "Realm": [
-      "~> 0.102.1"
+      "~> 2.1.0"
     ]
   }
 }

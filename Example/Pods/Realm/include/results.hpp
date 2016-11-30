@@ -21,6 +21,7 @@
 
 #include "collection_notifications.hpp"
 #include "shared_realm.hpp"
+#include "impl/collection_notifier.hpp"
 
 #include <realm/table_view.hpp>
 #include <realm/util/optional.hpp>
@@ -29,42 +30,42 @@ namespace realm {
 template<typename T> class BasicRowExpr;
 using RowExpr = BasicRowExpr<Table>;
 class Mixed;
+class ObjectSchema;
 
 namespace _impl {
     class ResultsNotifier;
 }
-
-struct SortOrder {
-    std::vector<size_t> column_indices;
-    std::vector<bool> ascending;
-
-    explicit operator bool() const { return !column_indices.empty(); }
-};
 
 class Results {
 public:
     // Results can be either be backed by nothing, a thin wrapper around a table,
     // or a wrapper around a query and a sort order which creates and updates
     // the tableview as needed
-    Results() = default;
-    Results(SharedRealm r, SortOrder s, TableView tv);
+    Results();
     Results(SharedRealm r, Table& table);
-    Results(SharedRealm r, Query q, SortOrder s = {});
-    Results(SharedRealm r, LinkViewRef lv, util::Optional<Query> q = {}, SortOrder s = {});
+    Results(SharedRealm r, Query q, SortDescriptor s = {});
+    Results(SharedRealm r, TableView tv, SortDescriptor s = {});
+    Results(SharedRealm r, LinkViewRef lv, util::Optional<Query> q = {}, SortDescriptor s = {});
     ~Results();
 
     // Results is copyable and moveable
-    Results(Results const&) = default;
-    Results(Results&&) = default;
-    Results& operator=(Results const&) = default;
-    Results& operator=(Results&&) = default;
+    Results(Results&&);
+    Results& operator=(Results&&);
+    Results(const Results&);
+    Results& operator=(const Results&);
+
+    // Get the Realm
+    SharedRealm get_realm() const { return m_realm; }
+
+    // Object schema describing the vendored object type
+    const ObjectSchema &get_object_schema() const;
 
     // Get a query which will match the same rows as is contained in this Results
     // Returned query will not be valid if the current mode is Empty
     Query get_query() const;
 
     // Get the currently applied sort order for this Results
-    SortOrder const& get_sort() const noexcept { return m_sort; }
+    SortDescriptor const& get_sort() const noexcept { return m_sort; }
 
     // Get a tableview containing the same rows as this Results
     TableView get_tableview();
@@ -101,12 +102,16 @@ public:
 
     // Create a new Results by further filtering or sorting this Results
     Results filter(Query&& q) const;
-    Results sort(SortOrder&& sort) const;
+    Results sort(SortDescriptor&& sort) const;
+
+    // Return a snapshot of this Results that never updates to reflect changes in the underlying data.
+    Results snapshot() const &;
+    Results snapshot() &&;
 
     // Get the min/max/average/sum of the given column
     // All but sum() returns none when there are zero matching rows
     // sum() returns 0, except for when it returns none
-    // Throws UnsupportedColumnTypeException for sum/average on datetime or non-numeric column
+    // Throws UnsupportedColumnTypeException for sum/average on timestamp or non-numeric column
     // Throws OutOfBoundsIndexException for an out-of-bounds column
     util::Optional<Mixed> max(size_t column);
     util::Optional<Mixed> min(size_t column);
@@ -117,42 +122,50 @@ public:
         Empty, // Backed by nothing (for missing tables)
         Table, // Backed directly by a Table
         Query, // Backed by a query that has not yet been turned into a TableView
-        LinkView, // Backed directly by a LinkView
-        TableView // Backed by a TableView created from a Query
+        LinkView,  // Backed directly by a LinkView
+        TableView, // Backed by a TableView created from a Query
     };
     // Get the currrent mode of the Results
     // Ideally this would not be public but it's needed for some KVO stuff
     Mode get_mode() const { return m_mode; }
 
+    // Is this Results associated with a Realm that has not been invalidated?
+    bool is_valid() const;
+
     // The Results object has been invalidated (due to the Realm being invalidated)
     // All non-noexcept functions can throw this
-    struct InvalidatedException {};
+    struct InvalidatedException : public std::logic_error {
+        InvalidatedException() : std::logic_error("Access to invalidated Results objects") {}
+    };
 
     // The input index parameter was out of bounds
-    struct OutOfBoundsIndexException {
-        size_t requested;
-        size_t valid_count;
+    struct OutOfBoundsIndexException : public std::out_of_range {
+        OutOfBoundsIndexException(size_t r, size_t c);
+        const size_t requested;
+        const size_t valid_count;
     };
 
     // The input Row object is not attached
-    struct DetatchedAccessorException { };
+    struct DetatchedAccessorException : public std::logic_error {
+        DetatchedAccessorException() : std::logic_error("Atempting to access an invalid object") {}
+    };
 
     // The input Row object belongs to a different table
-    struct IncorrectTableException {
-        StringData expected;
-        StringData actual;
+    struct IncorrectTableException : public std::logic_error {
+        IncorrectTableException(StringData e, StringData a, const std::string &error) :
+            std::logic_error(error), expected(e), actual(a) {}
+        const StringData expected;
+        const StringData actual;
     };
 
     // The requested aggregate operation is not supported for the column type
-    struct UnsupportedColumnTypeException {
+    struct UnsupportedColumnTypeException : public std::logic_error {
         size_t column_index;
         StringData column_name;
         DataType column_type;
 
-        UnsupportedColumnTypeException(size_t column, const Table* table);
+        UnsupportedColumnTypeException(size_t column, const Table* table, const char* operation);
     };
-
-    SharedRealm get_realm() const { return m_realm; }
 
     // Create an async query from this Results
     // The query will be run on a background thread and delivered to the callback,
@@ -171,22 +184,29 @@ public:
         friend class _impl::ResultsNotifier;
         static void set_table_view(Results& results, TableView&& tv);
     };
-
+    
 private:
+    enum class UpdatePolicy {
+        Auto,  // Update automatically to reflect changes in the underlying data.
+        Never, // Never update.
+    };
+
     SharedRealm m_realm;
+    mutable const ObjectSchema *m_object_schema = nullptr;
     Query m_query;
     TableView m_table_view;
     LinkViewRef m_link_view;
     Table* m_table = nullptr;
-    SortOrder m_sort;
+    SortDescriptor m_sort;
 
-    std::shared_ptr<_impl::ResultsNotifier> m_notifier;
+    _impl::CollectionNotifier::Handle<_impl::ResultsNotifier> m_notifier;
 
     Mode m_mode = Mode::Empty;
+    UpdatePolicy m_update_policy = UpdatePolicy::Auto;
     bool m_has_used_table_view = false;
     bool m_wants_background_updates = true;
 
-    void update_tableview();
+    void update_tableview(bool wants_notifications = true);
     bool update_linkview();
 
     void validate_read() const;
@@ -194,10 +214,11 @@ private:
 
     void prepare_async();
 
-    template<typename Int, typename Float, typename Double, typename DateTime>
+    template<typename Int, typename Float, typename Double, typename Timestamp>
     util::Optional<Mixed> aggregate(size_t column, bool return_none_for_empty,
+                                    const char* name,
                                     Int agg_int, Float agg_float,
-                                    Double agg_double, DateTime agg_datetime);
+                                    Double agg_double, Timestamp agg_timestamp);
 
     void set_table_view(TableView&& tv);
 };
