@@ -39,5 +39,5 @@ JSON-API formatted data (http://jsonapi.org) and Realm objects (http://realm.io)
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'Realm', '~> 2.1.0'
+  s.dependency 'Realm', '~> 2.10.1'
 end
