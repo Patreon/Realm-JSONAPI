@@ -20,11 +20,8 @@
   NSDictionary *map = [self JSONtoModelMap];
   RLMSchema *schema = [RLMRealm defaultRealm].schema;
   Class class = [self class];
-  // Realm often subclasses our objects with RLMAccessor, or RLMStandalone if we're not in a Realm
-  if ([NSStringFromClass(class) rangeOfString:@"RLMAccessor"].location != NSNotFound
-      || [NSStringFromClass(class) rangeOfString:@"RLMStandalone"].location != NSNotFound) {
-    class = [class superclass];
-  }
+  class = [class superclass];
+
   RLMObjectSchema *objectSchema = schema[NSStringFromClass(class)];
   NSString *propertyStringForRelationship = map[relationshipKey];
   RLMProperty *realmProperty = objectSchema[propertyStringForRelationship];
