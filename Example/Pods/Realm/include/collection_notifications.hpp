@@ -23,8 +23,8 @@
 #include "util/atomic_shared_ptr.hpp"
 
 #include <exception>
-#include <functional>
 #include <memory>
+#include <type_traits>
 #include <vector>
 
 namespace realm {
@@ -56,7 +56,7 @@ struct CollectionChangeSet {
         size_t from;
         size_t to;
 
-        bool operator==(Move m) const { return from == m.from && to == m.to; }
+        bool operator==(Move m) const noexcept { return from == m.from && to == m.to; }
     };
 
     // Indices which were removed from the _old_ collection
@@ -85,7 +85,10 @@ struct CollectionChangeSet {
     // unreported moves which show up only as a delete/insert pair.
     std::vector<Move> moves;
 
-    bool empty() const
+    // Per-column version of `modifications`
+    std::vector<IndexSet> columns;
+
+    bool empty() const noexcept
     {
         return deletions.empty() && insertions.empty() && modifications.empty()
             && modifications_new.empty() && moves.empty();

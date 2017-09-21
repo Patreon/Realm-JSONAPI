@@ -21,7 +21,7 @@
   "source_files": "Realm-JSONAPI/Classes/**/*",
   "dependencies": {
     "Realm": [
-      "~> 2.1.0"
+      "~> 2.10.1"
     ]
   }
 }

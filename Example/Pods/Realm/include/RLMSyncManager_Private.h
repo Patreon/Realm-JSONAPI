@@ -16,16 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-#import "RLMSyncManager.h"
+#import <Realm/RLMSyncManager.h>
 
 #import "RLMSyncUtil_Private.h"
-
-typedef NS_ENUM(NSUInteger, RLMSyncSessionErrorKind) {
-    RLMSyncSessionErrorKindDebug,
-    RLMSyncSessionErrorKindSessionFatal,
-    RLMSyncSessionErrorKindAccessDenied,
-    RLMSyncSessionErrorKindUserFatal,
-};
 
 @class RLMSyncUser, RLMSyncConfiguration;
 
@@ -38,12 +31,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, copy) RLMSyncBasicErrorReportingBlock sessionCompletionNotifier;
 
+- (nullable NSNumber *)globalSSLValidationDisabled;
+
 - (void)_fireError:(NSError *)error;
 
 - (void)_fireErrorWithCode:(int)errorCode
                    message:(NSString *)message
+                   isFatal:(BOOL)fatal
                    session:(RLMSyncSession *)session
-                errorClass:(RLMSyncSessionErrorKind)errorClass;
+                  userInfo:(NSDictionary *)userInfo
+                errorClass:(RLMSyncSystemErrorKind)errorClass;
 
 - (NSArray<RLMSyncUser *> *)_allUsers;
 

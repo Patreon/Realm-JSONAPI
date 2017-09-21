@@ -27,15 +27,18 @@ class SyncSession;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RLMSyncSession () RLM_SYNC_UNINITIALIZABLE
+@interface RLMSyncSession () {
+@public     // So it's visible to tests
+    std::weak_ptr<realm::SyncSession> _session;
+} RLM_SYNC_UNINITIALIZABLE
 
 - (instancetype)initWithSyncSession:(std::shared_ptr<realm::SyncSession>)session;
 
 /// Wait for pending uploads to complete or the session to expire, and dispatch the callback onto the specified queue.
-- (BOOL)waitForUploadCompletionOnQueue:(nullable dispatch_queue_t)queue callback:(void(^)(void))callback;
+- (BOOL)waitForUploadCompletionOnQueue:(nullable dispatch_queue_t)queue callback:(void(^)(NSError * _Nullable))callback;
 
 /// Wait for pending downloads to complete or the session to expire, and dispatch the callback onto the specified queue.
-- (BOOL)waitForDownloadCompletionOnQueue:(nullable dispatch_queue_t)queue callback:(void(^)(void))callback;
+- (BOOL)waitForDownloadCompletionOnQueue:(nullable dispatch_queue_t)queue callback:(void(^)(NSError * _Nullable))callback;
 
 @end
 

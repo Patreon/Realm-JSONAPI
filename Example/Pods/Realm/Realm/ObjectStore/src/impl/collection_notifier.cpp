@@ -31,6 +31,9 @@ std::function<bool (size_t)>
 CollectionNotifier::get_modification_checker(TransactionChangeInfo const& info,
                                              Table const& root_table)
 {
+    if (info.schema_changed)
+        set_table(root_table);
+
     // First check if any of the tables accessible from the root table were
     // actually modified. This can be false if there were only insertions, or
     // deletions which were not linked to by any row in the linking table
@@ -48,6 +51,8 @@ CollectionNotifier::get_modification_checker(TransactionChangeInfo const& info,
 void DeepChangeChecker::find_related_tables(std::vector<RelatedTable>& out, Table const& table)
 {
     auto table_ndx = table.get_index_in_group();
+    if (table_ndx == npos)
+        return;
     if (any_of(begin(out), end(out), [=](auto& tbl) { return tbl.table_ndx == table_ndx; }))
         return;
 
@@ -90,20 +95,24 @@ bool DeepChangeChecker::check_outgoing_links(size_t table_ndx,
     // Check if we're already checking if the destination of the link is
     // modified, and if not add it to the stack
     auto already_checking = [&](size_t col) {
-        for (auto p = m_current_path.begin(); p < m_current_path.begin() + depth; ++p) {
-            if (p->table == table_ndx && p->row == row_ndx && p->col == col)
-                return true;
+        auto end = m_current_path.begin() + depth;
+        auto match = std::find_if(m_current_path.begin(), end, [&](auto& p) {
+            return p.table == table_ndx && p.row == row_ndx && p.col == col;
+        });
+        if (match != end) {
+            for (; match < end; ++match) match->depth_exceeded = true;
+            return true;
         }
         m_current_path[depth] = {table_ndx, row_ndx, col, false};
         return false;
     };
 
-    for (auto const& link : it->links) {
+    auto linked_object_changed = [&](OutgoingLink const& link) {
         if (already_checking(link.col_ndx))
-            continue;
+            return false;
         if (!link.is_list) {
             if (table.is_null_link(link.col_ndx, row_ndx))
-                continue;
+                return false;
             auto dst = table.get_link(link.col_ndx, row_ndx);
             return check_row(*table.get_link_target(link.col_ndx), dst, depth + 1);
         }
@@ -115,9 +124,10 @@ bool DeepChangeChecker::check_outgoing_links(size_t table_ndx,
             if (check_row(target, dst, depth + 1))
                 return true;
         }
-    }
+        return false;
+    };
 
-    return false;
+    return std::any_of(begin(it->links), end(it->links), linked_object_changed);
 }
 
 bool DeepChangeChecker::check_row(Table const& table, size_t idx, size_t depth)
@@ -126,7 +136,7 @@ bool DeepChangeChecker::check_row(Table const& table, size_t idx, size_t depth)
     if (depth >= m_current_path.size()) {
         // Don't mark any of the intermediate rows checked along the path as
         // not modified, as a search starting from them might hit a modification
-        for (size_t i = 1; i < m_current_path.size(); ++i)
+        for (size_t i = 0; i < m_current_path.size(); ++i)
             m_current_path[i].depth_exceeded = true;
         return false;
     }
@@ -141,7 +151,7 @@ bool DeepChangeChecker::check_row(Table const& table, size_t idx, size_t depth)
         return false;
 
     bool ret = check_outgoing_links(table_ndx, table, idx, depth);
-    if (!ret && !m_current_path[depth].depth_exceeded)
+    if (!ret && (depth == 0 || !m_current_path[depth - 1].depth_exceeded))
         m_not_modified[table_ndx].add(idx);
     return ret;
 }
@@ -155,7 +165,7 @@ bool DeepChangeChecker::operator()(size_t ndx)
 
 CollectionNotifier::CollectionNotifier(std::shared_ptr<Realm> realm)
 : m_realm(std::move(realm))
-, m_sg_version(Realm::Internal::get_shared_group(*m_realm).get_version_of_current_transaction())
+, m_sg_version(Realm::Internal::get_shared_group(*m_realm)->get_version_of_current_transaction())
 {
 }
 
@@ -266,7 +276,7 @@ void CollectionNotifier::set_table(Table const& table)
 
 void CollectionNotifier::add_required_change_info(TransactionChangeInfo& info)
 {
-    if (!do_add_required_change_info(info)) {
+    if (!do_add_required_change_info(info) || m_related_tables.empty()) {
         return;
     }
 
@@ -286,6 +296,12 @@ void CollectionNotifier::prepare_handover()
     m_sg_version = m_sg->get_version_of_current_transaction();
     do_prepare_handover(*m_sg);
     m_has_run = true;
+
+#ifdef REALM_DEBUG
+    std::lock_guard<std::mutex> lock(m_callback_mutex);
+    for (auto& callback : m_callbacks)
+        REALM_ASSERT(!callback.skip_next);
+#endif
 }
 
 void CollectionNotifier::before_advance()
@@ -381,6 +397,11 @@ void CollectionNotifier::detach()
     m_sg = nullptr;
 }
 
+SharedGroup& CollectionNotifier::source_shared_group()
+{
+    return *Realm::Internal::get_shared_group(*m_realm);
+}
+
 void CollectionNotifier::add_changes(CollectionChangeBuilder change)
 {
     std::lock_guard<std::mutex> lock(m_callback_mutex);
@@ -429,8 +450,10 @@ void NotifierPackage::package_and_wait(util::Optional<VersionID::version_type> t
         return true;
     };
     m_notifiers.erase(std::remove_if(begin(m_notifiers), end(m_notifiers), package), end(m_notifiers));
-    if (m_version && target_version && m_version->version < *target_version)
+    if (m_version && target_version && m_version->version < *target_version) {
         m_notifiers.clear();
+        m_version = util::none;
+    }
     REALM_ASSERT(m_version || m_notifiers.empty());
 
     m_coordinator = nullptr;
@@ -464,4 +487,10 @@ void NotifierPackage::after_advance()
         return;
     for (auto& notifier : m_notifiers)
         notifier->after_advance();
+}
+
+void NotifierPackage::add_notifier(std::shared_ptr<CollectionNotifier> notifier)
+{
+    m_notifiers.push_back(notifier);
+    m_coordinator->register_notifier(notifier);
 }

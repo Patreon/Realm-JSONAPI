@@ -42,8 +42,8 @@ extern RLMIdentityProvider const RLMIdentityProviderFacebook;
 /// A Google account as an identity provider.
 extern RLMIdentityProvider const RLMIdentityProviderGoogle;
 
-/// An iCloud account as an identity provider.
-extern RLMIdentityProvider const RLMIdentityProviderICloud;
+/// A CloudKit account as an identity provider.
+extern RLMIdentityProvider const RLMIdentityProviderCloudKit;
 
 /**
  Opaque credentials representing a specific Realm Object Server user.
@@ -70,9 +70,9 @@ extern RLMIdentityProvider const RLMIdentityProviderICloud;
 + (instancetype)credentialsWithGoogleToken:(RLMSyncCredentialsToken)token;
 
 /**
- Construct and return credentials from an iCloud account token.
+ Construct and return credentials from an CloudKit account token.
  */
-+ (instancetype)credentialsWithICloudToken:(RLMSyncCredentialsToken)token;
++ (instancetype)credentialsWithCloudKitToken:(RLMSyncCredentialsToken)token;
 
 /**
  Construct and return credentials from a Realm Object Server username and password.
@@ -82,8 +82,18 @@ extern RLMIdentityProvider const RLMIdentityProviderICloud;
                                register:(BOOL)shouldRegister;
 
 /**
- Construct and return special credentials representing a token that can be directly used to open a Realm. The identity
- is used to uniquely identify the user across application launches.
+ Construct and return special credentials representing a token that can
+ be directly used to open a Realm. The identity is used to uniquely identify
+ the user across application launches.
+
+ @warning The custom user identity will be deprecated in a future release.
+
+ @warning Do not specify a user identity that is the URL of an authentication
+          server.
+
+ @warning When passing an access token credential into any of `RLMSyncUser`'s
+          login methods, you must always specify the same authentication server
+          URL, or none at all, every time you call the login method.
  */
 + (instancetype)credentialsWithAccessToken:(RLMServerToken)accessToken identity:(NSString *)identity;
 

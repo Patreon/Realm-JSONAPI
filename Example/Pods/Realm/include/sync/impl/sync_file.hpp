@@ -21,6 +21,10 @@
 
 #include <string>
 
+#include "sync/sync_user.hpp"
+
+#include <realm/util/optional.hpp>
+
 namespace realm {
 
 namespace util {
@@ -45,6 +49,13 @@ std::string file_path_by_appending_component(const std::string& path,
 /// Given a file path and an extension, append the extension to the path.
 std::string file_path_by_appending_extension(const std::string& path, const std::string& extension);
 
+/// Create a timestamped `mktemp`-compatible template string using the current local time.
+std::string create_timestamped_template(const std::string& prefix, int wildcard_count=8);
+
+/// Reserve a unique file name based on a base directory path and a `mktemp`-compatible template string.
+/// Returns the path of the file.
+std::string reserve_unique_file_name(const std::string& path, const std::string& template_string);
+
 /// Remove a directory, including non-empty directories.
 void remove_nonempty_dir(const std::string& path);
 
@@ -55,16 +66,30 @@ public:
     SyncFileManager(std::string base_path) : m_base_path(std::move(base_path)) { }
 
     /// Return the user directory for a given user, creating it if it does not already exist.
-    std::string user_directory(const std::string& user_identity) const;
+    std::string user_directory(const std::string& local_identity,
+                               util::Optional<SyncUserIdentifier> user_info=none) const;
 
     /// Remove the user directory for a given user.
-    void remove_user_directory(const std::string& user_identity) const;       // throws
+    void remove_user_directory(const std::string& local_identity) const;       // throws
+
+    /// Rename a user directory. Returns true if a directory at `old_name` existed
+    /// and was successfully renamed to `new_name`. Returns false if no directory
+    /// exists at `old_name`.
+    bool try_rename_user_directory(const std::string& old_name, const std::string& new_name) const;
 
     /// Return the path for a given Realm, creating the user directory if it does not already exist.
-    std::string path(const std::string& user_identity, const std::string& raw_realm_path) const;
+    std::string path(const std::string&, const std::string&,
+                     util::Optional<SyncUserIdentifier> user_info=none) const;
 
     /// Remove the Realm at a given path for a given user. Returns `true` if the remove operation fully succeeds.
-    bool remove_realm(const std::string& user_identity, const std::string& raw_realm_path) const;
+    bool remove_realm(const std::string& local_identity, const std::string& raw_realm_path) const;
+
+    /// Remove the Realm whose primary Realm file is located at `absolute_path`. Returns `true` if the remove
+    /// operation fully succeeds.
+    bool remove_realm(const std::string& absolute_path) const;
+
+    /// Copy the Realm file at the location `old_path` to the location of `new_path`.
+    bool copy_realm_file(const std::string& old_path, const std::string& new_path) const;
 
     /// Return the path for the metadata Realm files.
     std::string metadata_path() const;
@@ -72,8 +97,14 @@ public:
     /// Remove the metadata Realm.
     bool remove_metadata_realm() const;
 
-    const std::string& base_path() const {
+    const std::string& base_path() const
+    {
         return m_base_path;
+    }
+
+    std::string recovery_directory_path() const
+    {
+        return get_special_directory(c_recovery_directory);
     }
 
 private:
@@ -81,10 +112,18 @@ private:
 
     static constexpr const char c_sync_directory[] = "realm-object-server";
     static constexpr const char c_utility_directory[] = "io.realm.object-server-utility";
+    static constexpr const char c_recovery_directory[] = "io.realm.object-server-recovered-realms";
     static constexpr const char c_metadata_directory[] = "metadata";
     static constexpr const char c_metadata_realm[] = "sync_metadata.realm";
+    static constexpr const char c_user_info_file[] = "__user_info";
 
-    std::string get_utility_directory() const;
+    std::string get_special_directory(std::string directory_name) const;
+
+    std::string get_utility_directory() const
+    {
+        return get_special_directory(c_utility_directory);
+    }
+
     std::string get_base_sync_directory() const;
 };
 

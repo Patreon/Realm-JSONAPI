@@ -1,11 +1,11 @@
 PODS:
-  - Expecta (1.0.5)
-  - Realm (2.1.0):
-    - Realm/Headers (= 2.1.0)
+  - Expecta (1.0.6)
+  - Realm (2.10.1):
+    - Realm/Headers (= 2.10.1)
   - Realm-JSONAPI (0.1.4):
-    - Realm (~> 2.1.0)
-  - Realm/Headers (2.1.0)
-  - Specta (1.0.5)
+    - Realm (~> 2.10.1)
+  - Realm/Headers (2.10.1)
+  - Specta (1.0.6)
 
 DEPENDENCIES:
   - Expecta
@@ -17,11 +17,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
-  Realm: bc829ad0ef3d4eea70c34cfcc3b1704d18d50df1
-  Realm-JSONAPI: c7646e908da804eee7f51ec3c2d1de7919f5716a
-  Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
+  Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  Realm: fc7a317a5c2c9ba91f5f235ede4e2ea76e9eba0c
+  Realm-JSONAPI: bee365ff5113d9b0e138a5c76e57ada846f5c69a
+  Specta: f506f3a8361de16bc0dcf3b17b75e269072ba465
 
 PODFILE CHECKSUM: 7916bbf39bdd32b6ae88449b7274f9fc056f22bc
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1
