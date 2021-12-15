@@ -1,7 +1,8 @@
 #import "NSDictionary+URLEncoding.h"
 
 static NSString *fullyURLEncodeString(NSString *string) {
-  return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)string, NULL, (CFStringRef)@"$&+,/:;=?@ \t#<>\"\n!*'()%[]", kCFStringEncodingUTF8));
+  NSCharacterSet *characters = [NSCharacterSet characterSetWithCharactersInString:@"$&+,/:;=?@ \t#<>\"\n!*'()%[]"];
+  return [string stringByAddingPercentEncodingWithAllowedCharacters:characters];
 }
 
 // helper function: get the string form of any object
