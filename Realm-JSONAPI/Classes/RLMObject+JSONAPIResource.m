@@ -8,16 +8,16 @@
 }
 
 + (NSString *)type {
-  NSString *type = [[JSONAPIResourceRegistry sharedInstance] jsonTypeStringForClass:[self class]];
+  NSString *type = [JSONAPIResourceRegistry.sharedInstance jsonTypeStringForClass:[self class]];
   Class klass = [self class];
   while (!type && (klass = [klass superclass])) {
-    type = [[JSONAPIResourceRegistry sharedInstance] jsonTypeStringForClass:klass];
+    type = [JSONAPIResourceRegistry.sharedInstance jsonTypeStringForClass:klass];
   }
   return type;
 }
 
 + (Class)classForRelationship:(NSString *)relationshipKey {
-  NSDictionary *map = [self JSONtoModelMap];
+  NSDictionary *map = self.JSONtoModelMap;
   RLMSchema *schema = [RLMRealm defaultRealm].schema;
   Class class = [self class];
   class = [class superclass];

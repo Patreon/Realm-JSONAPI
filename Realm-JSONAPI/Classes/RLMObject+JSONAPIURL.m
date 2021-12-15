@@ -13,9 +13,9 @@
 }
 
 + (NSDictionary<NSString *, NSArray<NSString *> *> *)defaultAttributesAsFieldsDictionary {
-  NSArray *defaultAttributes = [self defaultAttributes];
+  NSArray *defaultAttributes = self.defaultAttributes;
   if (defaultAttributes != nil) {
-    return @{[self type]: [self defaultAttributes]};
+    return @{self.type: defaultAttributes};
   } else {
     return @{};
   }
@@ -23,7 +23,7 @@
 
 + (NSDictionary<NSString *, NSArray<NSString *> *> *)fieldsIncludingRelationships:(NSArray<NSString *> *)relationships {
   NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithCapacity:(1 + relationships.count)];
-  [fields addEntriesFromDictionary:[self defaultAttributesAsFieldsDictionary]];
+  [fields addEntriesFromDictionary:self.defaultAttributesAsFieldsDictionary];
   for (NSString *relationshipKey in relationships) {
     NSArray *relationshipPathKeys = [relationshipKey componentsSeparatedByString:@"."];
     NSString *firstRelationshipKey = [relationshipPathKeys firstObject];
@@ -42,8 +42,8 @@
 
 + (NSString *)defaultURLDecoration:(NSString *)bareURL {
   return [JSONAPIURLUtilities specifiedURLForBareURL:bareURL
-                                        withIncludes:[self defaultRelationships]
-                                           andFields:[self fieldsIncludingRelationships:[self defaultRelationships]]];
+                                        withIncludes:self.defaultRelationships
+                                           andFields:[self fieldsIncludingRelationships:self.defaultRelationships]];
 }
 
 @end

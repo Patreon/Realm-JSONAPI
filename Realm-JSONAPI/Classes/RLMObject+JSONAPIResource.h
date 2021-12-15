@@ -24,7 +24,7 @@
  * would parse {"data": {"id": "1", "type": "people", "attributes": {"name": {"first": "Dan", "last": "Gebhardt"}, "twitter": "dgeb"}}}
  * into a Person model where [person.uid isEqual:@"1"], [person.firstName isEqual:@"Dan"], etc.
  */
-+ (NSDictionary<NSString *, NSString *> *)JSONtoModelMap;
+@property (class, nonatomic, readonly) NSDictionary<NSString *, NSString *> *JSONtoModelMap NS_SWIFT_NAME(jsonToModelMap);
 
 /**
  * This method uses the JSONAPIResourceRegistry to look up this class's type string.
@@ -35,7 +35,7 @@
  *
  * @see JSONAPIResourceRegistry
  */
-+ (NSString *)type;
+@property (class, nonatomic, readonly) NSString *type;
 
 /**
  * The RLMObject subclass which represents relationships known to this class by the provided relationshipKey

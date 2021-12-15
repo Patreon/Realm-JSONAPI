@@ -24,7 +24,7 @@
                       inRealm:(RLMRealm *)realm
 {
   if ([json isKindOfClass:[NSDictionary class]]) {
-    Class cls = [[JSONAPIResourceRegistry sharedInstance] classForJSONTypeString:json[@"type"]];
+    Class cls = [JSONAPIResourceRegistry.sharedInstance classForJSONTypeString:json[@"type"]];
     if ([cls conformsToProtocol:@protocol(RLMObjectWithSubclass)]) {
       cls = [((id<RLMObjectWithSubclass>)cls) subclassForJSON:json];
     }

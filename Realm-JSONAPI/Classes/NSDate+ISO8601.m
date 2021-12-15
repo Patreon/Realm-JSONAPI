@@ -15,7 +15,7 @@
   tm.tm_isdst = -1;
   t = mktime(&tm);
 
-  return [NSDate dateWithTimeIntervalSince1970:t + [[NSTimeZone localTimeZone] secondsFromGMT]];
+  return [NSDate dateWithTimeIntervalSince1970:t + [NSTimeZone.localTimeZone secondsFromGMT]];
 }
 
 - (NSString *)ISO8601String {

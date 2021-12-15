@@ -8,7 +8,7 @@
 
 + (NSDictionary<NSString *, id> *)mapJSONToModel:(NSDictionary *)json withRealm:(RLMRealm *)realm {
   NSMutableDictionary *model = [NSMutableDictionary dictionary];
-  NSDictionary        *map = [self JSONtoModelMap];
+  NSDictionary        *map = self.JSONtoModelMap;
   RLMSchema           *schema = realm.schema;
   RLMObjectSchema     *objectSchema = schema[NSStringFromClass([self class])];
 

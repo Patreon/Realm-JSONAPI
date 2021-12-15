@@ -41,7 +41,7 @@
       if ([propertyClass isSubclassOfClass:[RLMObject class]]
           && [realmProperty type] != RLMPropertyTypeArray)
       {
-        NSString *typeString = [[JSONAPIResourceRegistry sharedInstance] jsonTypeStringForClass:propertyClass];
+        NSString *typeString = [JSONAPIResourceRegistry.sharedInstance jsonTypeStringForClass:propertyClass];
         NSDictionary *linkage = @{@"data": @{@"type": typeString,
                                              @"id": value[[[value class] primaryKey]]}};
         [links setObject:linkage forKey:jsonPath];
@@ -57,7 +57,7 @@
       {
         NSMutableArray *array = [NSMutableArray array];
         for (id item in(RLMArray *) value) {
-          NSString *typeString = [[JSONAPIResourceRegistry sharedInstance] jsonTypeStringForClass:propertyClass];
+          NSString *typeString = [JSONAPIResourceRegistry.sharedInstance jsonTypeStringForClass:propertyClass];
           NSDictionary *linkage = @{@"type": typeString,
                                     @"id": item[[[item class] primaryKey]]};
           [array addObject:linkage];
@@ -90,7 +90,7 @@
       }
     }
   }
-  result[@"type"] = [[JSONAPIResourceRegistry sharedInstance] jsonTypeStringForClass:class];
+  result[@"type"] = [JSONAPIResourceRegistry.sharedInstance jsonTypeStringForClass:class];
   return [result mutableCopy];
 }
 

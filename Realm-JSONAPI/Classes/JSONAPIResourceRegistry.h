@@ -11,7 +11,7 @@
 /**
  * @return a JSONAPIResourceRegistry in which you can register your RLMObjects
  */
-+ (JSONAPIResourceRegistry *)sharedInstance;
+@property (class, nonatomic, readonly) JSONAPIResourceRegistry *sharedInstance;
 
 /**
  * Register a binding between a given resource type string

@@ -30,7 +30,7 @@
  * @see +defaultAttributesAsFieldsDictionary
  * @see [http://jsonapi.org/format#fetching-sparse-fieldsets](http://jsonapi.org/format#fetching-sparse-fieldsets) JSON:API docs on Sparse Fieldsets
  */
-+ (NSArray<NSString *> *)defaultAttributes;
+@property (class, nonatomic, readonly) NSArray<NSString *> *defaultAttributes;
 
 /**
  * These relationships are converted, along with the attributes in defaultAttributes, into
@@ -44,7 +44,7 @@
  * @see +defaultURLDecoration:
  * @see [http://jsonapi.org/format#fetching-includes](http://jsonapi.org/format#fetching-includes) JSON:API docs on Inclusion of Related Resources
  */
-+ (NSArray<NSString *> *)defaultRelationships;
+@property (class, nonatomic, readonly) NSArray<NSString *> *defaultRelationships;
 
 /**
  * Turns the defaultAttributes and defaultRelationships of this object into
@@ -70,7 +70,7 @@
  *
  * @return This class's defaultAttributes NSArray as the value in a dictionary where this class's type is the key.
  */
-+ (NSDictionary<NSString *, NSArray<NSString *> *> *)defaultAttributesAsFieldsDictionary;
+@property (class, nonatomic, readonly) NSDictionary<NSString *, NSArray<NSString *> *> *defaultAttributesAsFieldsDictionary;
 
 /**
  * Useful if you wish to modify the query parameters instead of using the defaultURLDecoration method directly.
