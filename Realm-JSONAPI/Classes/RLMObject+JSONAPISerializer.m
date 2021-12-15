@@ -5,11 +5,11 @@
 
 @implementation RLMObject (JSONAPISerializer)
 
-- (NSDictionary *)toJSON {
+- (NSDictionary<NSString *, id> *)toJSON {
   return [[self toJSONWithIncludedTypes:[NSSet set]] objectForKey:@"data"];
 }
 
-- (NSDictionary *)toJSONWithIncludedTypes:(NSSet *)types {
+- (NSDictionary<NSString *, id> *)toJSONWithIncludedTypes:(NSSet<NSString *> *)types {
   NSMutableSet *included = [NSMutableSet set];
   NSMutableDictionary *data = [self toJSONWithIncludedTypes:types
                                               inIncludedSet:included];
@@ -21,8 +21,8 @@
   return result;
 }
 
-- (NSMutableDictionary *)toJSONWithIncludedTypes:(NSSet *)types
-                                   inIncludedSet:(NSMutableSet *)included
+- (NSMutableDictionary<NSString *, id> *)toJSONWithIncludedTypes:(NSSet<NSString *> *)types
+                                                   inIncludedSet:(NSMutableSet *)included
 {
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
   NSMutableDictionary *links = [NSMutableDictionary dictionary];

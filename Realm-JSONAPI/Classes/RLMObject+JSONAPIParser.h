@@ -19,13 +19,13 @@
  * unlike -mapJSONToModel:withRealm (which this method uses under the hood)
  * @return An RLMObject subclass instance, representing the same resource as the supplied json
  */
-+ (instancetype)createInRealm:(RLMRealm *)realm withJSON:(NSDictionary *)json;
++ (instancetype)createInRealm:(RLMRealm *)realm withJSON:(NSDictionary<NSString *, id> *)json;
 
 /**
  * Same as createInRealm:withJSON:, passing in [RLMRealm defaultRealm] as the realm
  * @see -createInRealm:withJson:
  */
-+ (instancetype)createInDefaultRealmWithJSON:(NSDictionary *)json;
++ (instancetype)createInDefaultRealmWithJSON:(NSDictionary<NSString *, id> *)json;
 
 /**
  * Add a JSON:API resource object to a given realm,
@@ -37,13 +37,13 @@
  * unlike -mapJSONToModel:withRealm (which this method uses under the hood)
  * @return An RLMObject subclass instance, representing the same resource as the supplied json
  */
-+ (instancetype)createOrUpdateInRealm:(RLMRealm *)realm withJSON:(NSDictionary *)json;
++ (instancetype)createOrUpdateInRealm:(RLMRealm *)realm withJSON:(NSDictionary<NSString *, id> *)json;
 
 /**
  * Same as createInRealm:withJSON:, passing in [RLMRealm defaultRealm] as the realm
  * @see -createOrUpdateInRealm:withJSON:
  */
-+ (instancetype)createOrUpdateInDefaultRealmWithJSON:(NSDictionary *)json;
++ (instancetype)createOrUpdateInDefaultRealmWithJSON:(NSDictionary<NSString *, id> *)json;
 
 /**
  * @param json A JSON:API Resource Object
@@ -52,6 +52,6 @@
  * and find any related resources via querying this realm.
  * @return A flattened map from RLMObject property names to property values, as can be passed to createInRealm:withValue:
  */
-+ (NSDictionary *)mapJSONToModel:(NSDictionary *)json withRealm:(RLMRealm *)realm;
++ (NSDictionary<NSString *, id> *)mapJSONToModel:(NSDictionary<NSString *, id> *)json withRealm:(RLMRealm *)realm;
 
 @end

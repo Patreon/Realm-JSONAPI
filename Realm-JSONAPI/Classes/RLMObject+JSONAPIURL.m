@@ -4,15 +4,15 @@
 
 @implementation RLMObject (JSONAPIURL)
 
-+ (NSArray *)defaultAttributes {
++ (NSArray<NSString *> *)defaultAttributes {
   return nil;
 }
 
-+ (NSArray *)defaultRelationships {
++ (NSArray<NSString *> *)defaultRelationships {
   return nil;
 }
 
-+ (NSDictionary *)defaultAttributesAsFieldsDictionary {
++ (NSDictionary<NSString *, NSArray<NSString *> *> *)defaultAttributesAsFieldsDictionary {
   NSArray *defaultAttributes = [self defaultAttributes];
   if (defaultAttributes != nil) {
     return @{[self type]: [self defaultAttributes]};
@@ -21,7 +21,7 @@
   }
 }
 
-+ (NSDictionary *)fieldsIncludingRelationships:(NSArray *)relationships {
++ (NSDictionary<NSString *, NSArray<NSString *> *> *)fieldsIncludingRelationships:(NSArray<NSString *> *)relationships {
   NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithCapacity:(1 + relationships.count)];
   [fields addEntriesFromDictionary:[self defaultAttributesAsFieldsDictionary]];
   for (NSString *relationshipKey in relationships) {

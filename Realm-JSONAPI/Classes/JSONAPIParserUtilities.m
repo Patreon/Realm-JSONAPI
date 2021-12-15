@@ -5,7 +5,7 @@
 
 @implementation JSONAPIParserUtilities
 
-+ (id)putJSON:(NSDictionary *)json
++ (id)putJSON:(NSDictionary<NSString *, id> *)json
       inRealm:(RLMRealm *)realm
 {
   [realm beginWriteTransaction];

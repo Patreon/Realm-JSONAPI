@@ -6,7 +6,7 @@
 
 @implementation RLMObject (JSONAPIParser)
 
-+ (NSDictionary *)mapJSONToModel:(NSDictionary *)json withRealm:(RLMRealm *)realm {
++ (NSDictionary<NSString *, id> *)mapJSONToModel:(NSDictionary *)json withRealm:(RLMRealm *)realm {
   NSMutableDictionary *model = [NSMutableDictionary dictionary];
   NSDictionary        *map = [self JSONtoModelMap];
   RLMSchema           *schema = realm.schema;
@@ -159,19 +159,19 @@
 }
 
 // TODO: construct the json on a bg thread, then put in realm on the main thread
-+ (instancetype)createInDefaultRealmWithJSON:(NSDictionary *)json {
++ (instancetype)createInDefaultRealmWithJSON:(NSDictionary<NSString *, id> *)json {
   return [self createInRealm:[RLMRealm defaultRealm] withJSON:json];
 }
 
-+ (instancetype)createInRealm:(RLMRealm *)realm withJSON:(NSDictionary *)json {
++ (instancetype)createInRealm:(RLMRealm *)realm withJSON:(NSDictionary<NSString *, id> *)json {
   return [self createInRealm:realm withValue:[self mapJSONToModel:json withRealm:realm]];
 }
 
-+ (instancetype)createOrUpdateInDefaultRealmWithJSON:(NSDictionary *)json {
++ (instancetype)createOrUpdateInDefaultRealmWithJSON:(NSDictionary<NSString *, id> *)json {
   return [self createOrUpdateInRealm:[RLMRealm defaultRealm] withJSON:json];
 }
 
-+ (instancetype)createOrUpdateInRealm:(RLMRealm *)realm withJSON:(NSDictionary *)json {
++ (instancetype)createOrUpdateInRealm:(RLMRealm *)realm withJSON:(NSDictionary<NSString *, id> *)json {
   return [self createOrUpdateInRealm:realm withValue:[self mapJSONToModel:json withRealm:realm]];
 }
 

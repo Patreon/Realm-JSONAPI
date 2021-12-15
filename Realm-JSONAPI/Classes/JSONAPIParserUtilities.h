@@ -20,7 +20,7 @@
  *
  * @return an RLMObject representing the json[@"data"] data.
  */
-+ (id)putJSON:(NSDictionary *)json
++ (id)putJSON:(NSDictionary<NSString *, id> *)json
       inRealm:(RLMRealm *)realm;
 
 @end

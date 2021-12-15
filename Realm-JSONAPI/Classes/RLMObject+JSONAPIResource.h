@@ -24,7 +24,7 @@
  * would parse {"data": {"id": "1", "type": "people", "attributes": {"name": {"first": "Dan", "last": "Gebhardt"}, "twitter": "dgeb"}}}
  * into a Person model where [person.uid isEqual:@"1"], [person.firstName isEqual:@"Dan"], etc.
  */
-+ (NSDictionary *)JSONtoModelMap;
++ (NSDictionary<NSString *, NSString *> *)JSONtoModelMap;
 
 /**
  * This method uses the JSONAPIResourceRegistry to look up this class's type string.

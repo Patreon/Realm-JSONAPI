@@ -3,7 +3,7 @@
 
 @implementation RLMObject (JSONAPIResource)
 
-+ (NSDictionary *)JSONtoModelMap {
++ (NSDictionary<NSString *, NSString *> *)JSONtoModelMap {
   return nil;
 }
 
