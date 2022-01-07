@@ -6,16 +6,13 @@
 
 @implementation JSONAPIResourceRegistry
 
-static JSONAPIResourceRegistry *JSONAPIResourceRegistrySharedInstance = nil;
-
 + (JSONAPIResourceRegistry *)sharedInstance {
-  if (!JSONAPIResourceRegistrySharedInstance) {
-    @synchronized(self) {
-      JSONAPIResourceRegistrySharedInstance = [super allocWithZone:NULL];
-      JSONAPIResourceRegistrySharedInstance = [JSONAPIResourceRegistrySharedInstance init];
-    }
-  }
-  return JSONAPIResourceRegistrySharedInstance;
+  static JSONAPIResourceRegistry *sharedInstance = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    sharedInstance = [[JSONAPIResourceRegistry alloc] init];
+  });
+  return sharedInstance;
 }
 
 - (instancetype)init {
