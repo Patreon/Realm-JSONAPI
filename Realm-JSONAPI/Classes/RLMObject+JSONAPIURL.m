@@ -4,11 +4,11 @@
 
 @implementation RLMObject (JSONAPIURL)
 
-+ (NSArray<NSString *> *)defaultAttributes {
++ (nullable NSArray<NSString *> *)defaultAttributes {
   return nil;
 }
 
-+ (NSArray<NSString *> *)defaultRelationships {
++ (nullable NSArray<NSString *> *)defaultRelationships {
   return nil;
 }
 

@@ -1,5 +1,7 @@
 #import <Realm/Realm.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * This category handles serializing RLMObjects into JSON:API documents worthy of sending to your server.
  * You can use `toJSON` to serialize just this RLMObject,
@@ -29,3 +31,5 @@
 - (NSDictionary<NSString *, id> *)toJSONWithIncludedTypes:(NSSet<NSString *> *)types;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -3,7 +3,7 @@
 
 @implementation NSDate (ISO8601)
 
-+ (NSDate *)dateFromISO8601String:(NSString *)string {
++ (nullable NSDate *)dateFromISO8601String:(NSString *)string {
   if (!string) {
     return nil;
   }

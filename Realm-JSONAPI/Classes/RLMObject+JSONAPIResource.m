@@ -3,11 +3,11 @@
 
 @implementation RLMObject (JSONAPIResource)
 
-+ (NSDictionary<NSString *, NSString *> *)JSONtoModelMap {
++ (nullable NSDictionary<NSString *, NSString *> *)JSONtoModelMap {
   return nil;
 }
 
-+ (NSString *)type {
++ (nullable NSString *)type {
   NSString *type = [JSONAPIResourceRegistry.sharedInstance jsonTypeStringForClass:[self class]];
   Class klass = [self class];
   while (!type && (klass = [klass superclass])) {
@@ -16,7 +16,7 @@
   return type;
 }
 
-+ (Class)classForRelationship:(NSString *)relationshipKey {
++ (nullable Class)classForRelationship:(NSString *)relationshipKey {
   NSDictionary *map = self.JSONtoModelMap;
   RLMSchema *schema = [RLMRealm defaultRealm].schema;
   Class class = [self class];
@@ -25,6 +25,9 @@
   RLMObjectSchema *objectSchema = schema[NSStringFromClass(class)];
   NSString *propertyStringForRelationship = map[relationshipKey];
   RLMProperty *realmProperty = objectSchema[propertyStringForRelationship];
+  if (realmProperty == nil) {
+    return nil;
+  }
   return NSClassFromString(realmProperty.objectClassName);
 }
 

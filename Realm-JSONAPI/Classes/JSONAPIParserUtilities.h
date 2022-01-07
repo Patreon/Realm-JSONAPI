@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 #import <Realm/RLMRealm.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * The primary entry point for parsing server responses.
  * Takes in a server response, and puts the corresponding objects in the realm
@@ -20,7 +22,9 @@
  *
  * @return an RLMObject representing the json[@"data"] data.
  */
-+ (id)putJSON:(NSDictionary<NSString *, id> *)json
-      inRealm:(RLMRealm *)realm;
++ (nullable id)putJSON:(NSDictionary<NSString *, id> *)json
+               inRealm:(RLMRealm *)realm;
 
 @end
+
+NS_ASSUME_NONNULL_END

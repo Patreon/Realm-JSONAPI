@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * A class that makes it very easy to move between NSDates and ISO8601-formatted strings.
  * Uses strptime and strftime from C's time.h lib under the hood for performance gains.
@@ -13,7 +15,7 @@
  *
  * @see https://en.wikipedia.org/wiki/ISO_8601
  */
-+ (NSDate *)dateFromISO8601String:(NSString *)string;
++ (nullable NSDate *)dateFromISO8601String:(nullable NSString *)string;
 
 /**
  * @return an NSString representing the current NSDate as an ISO8601-formatted string.
@@ -29,3 +31,5 @@
 //- (NSString *)ISO8601MillisString;
 
 @end
+
+NS_ASSUME_NONNULL_END

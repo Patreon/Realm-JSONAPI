@@ -30,11 +30,11 @@ static JSONAPIResourceRegistry *JSONAPIResourceRegistrySharedInstance = nil;
   self.classMap[jsonType] = cls;
 }
 
-- (NSString *)jsonTypeStringForClass:(Class)cls {
+- (nullable NSString *)jsonTypeStringForClass:(Class)cls {
   return [[self.classMap allKeysForObject:cls] firstObject];
 }
 
-- (Class)classForJSONTypeString:(NSString *)typeString {
+- (nullable Class)classForJSONTypeString:(NSString *)typeString {
   return self.classMap[typeString];
 }
 

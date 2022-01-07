@@ -1,5 +1,7 @@
 #import <Realm/Realm.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * This category handles parsing JSON:API server responses into RLMObjects.
  * It is typically not used directly, but rather invoked by JSONAPIParserUtilities.
@@ -55,3 +57,5 @@
 + (NSDictionary<NSString *, id> *)mapJSONToModel:(NSDictionary<NSString *, id> *)json withRealm:(RLMRealm *)realm;
 
 @end
+
+NS_ASSUME_NONNULL_END

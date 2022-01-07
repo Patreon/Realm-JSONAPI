@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * If you wish to parse one JSON:API resource type into more than one RLMObject type,
  * have a parent RLMObject class declare that it follows this protocol and implement the required method.
@@ -13,3 +15,5 @@
 + (Class)subclassForJSON:(id)json;
 
 @end
+
+NS_ASSUME_NONNULL_END

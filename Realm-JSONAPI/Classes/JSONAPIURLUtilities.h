@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * Use this class to specify exactly what information you want the server to return.
  * By explicitly requesting what you want, you make the server not have to guess.
@@ -27,7 +29,9 @@
  * @see [http://jsonapi.org/format#fetching-sparse-fieldsets](http://jsonapi.org/format#fetching-sparse-fieldsets) JSON:API docs on Sparse Fieldsets
  */
 + (NSString *)specifiedURLForBareURL:(NSString *)bareURL
-                        withIncludes:(NSArray *)includes
-                           andFields:(NSDictionary *)fields;
+                        withIncludes:(nullable NSArray<NSString *> *)includes
+                           andFields:(nullable NSDictionary<NSString *, NSArray<NSString *> *> *)fields;
 
 @end
+
+NS_ASSUME_NONNULL_END

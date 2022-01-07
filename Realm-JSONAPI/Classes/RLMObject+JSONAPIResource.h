@@ -1,5 +1,7 @@
 #import <Realm/Realm.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * This category defines the primary schema by which Realm-JSONAPI does its work:
  * a way to translate between JSON:API Resource Objects and RLMObjects.
@@ -24,7 +26,7 @@
  * would parse {"data": {"id": "1", "type": "people", "attributes": {"name": {"first": "Dan", "last": "Gebhardt"}, "twitter": "dgeb"}}}
  * into a Person model where [person.uid isEqual:@"1"], [person.firstName isEqual:@"Dan"], etc.
  */
-@property (class, nonatomic, readonly) NSDictionary<NSString *, NSString *> *JSONtoModelMap NS_SWIFT_NAME(jsonToModelMap);
+@property (class, nonatomic, readonly, nullable) NSDictionary<NSString *, NSString *> *JSONtoModelMap NS_SWIFT_NAME(jsonToModelMap);
 
 /**
  * This method uses the JSONAPIResourceRegistry to look up this class's type string.
@@ -35,7 +37,7 @@
  *
  * @see JSONAPIResourceRegistry
  */
-@property (class, nonatomic, readonly) NSString *type;
+@property (class, nonatomic, readonly, nullable) NSString *type;
 
 /**
  * The RLMObject subclass which represents relationships known to this class by the provided relationshipKey
@@ -46,6 +48,8 @@
  * @return A subclass of RLMObject (as a class, not an instance)
  * that can be used to represents relationships known by the provided relationshipKey.
  */
-+ (Class)classForRelationship:(NSString *)relationshipKey;
++ (nullable Class)classForRelationship:(NSString *)relationshipKey;
 
 @end
+
+NS_ASSUME_NONNULL_END

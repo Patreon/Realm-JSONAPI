@@ -5,8 +5,8 @@
 
 @implementation JSONAPIParserUtilities
 
-+ (id)putJSON:(NSDictionary<NSString *, id> *)json
-      inRealm:(RLMRealm *)realm
++ (nullable id)putJSON:(NSDictionary<NSString *, id> *)json
+               inRealm:(RLMRealm *)realm
 {
   [realm beginWriteTransaction];
   id response = [self constructObjectWithJSON:json[@"data"]
@@ -20,8 +20,8 @@
   return response;
 }
 
-+ (id)constructObjectWithJSON:(id)json
-                      inRealm:(RLMRealm *)realm
++ (nullable id)constructObjectWithJSON:(id)json
+                               inRealm:(RLMRealm *)realm
 {
   if ([json isKindOfClass:[NSDictionary class]]) {
     Class cls = [JSONAPIResourceRegistry.sharedInstance classForJSONTypeString:json[@"type"]];

@@ -24,8 +24,8 @@
 }
 
 + (NSString *)specifiedURLForBareURL:(NSString *)bareURL
-                        withIncludes:(NSArray *)includes
-                           andFields:(NSDictionary *)fields
+                        withIncludes:(nullable NSArray<NSString *> *)includes
+                           andFields:(nullable NSDictionary<NSString *, NSArray<NSString *> *> *)fields
 {
   NSString *connector = @"?";
   if ([bareURL rangeOfString:@"?"].location != NSNotFound) {

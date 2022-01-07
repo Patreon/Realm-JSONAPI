@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * A two-way lookup for JSON:API type strings and their corresponding RLMObject classes.
  * You should use bindJSONType:toClass: as early as possible in your application's lifecycle,
@@ -36,7 +38,7 @@
  * It is used to indicate to the server which API resources we are referring to,
  * or to understand which API resources the server has sent to us.
  */
-- (NSString *)jsonTypeStringForClass:(Class)cls;
+- (nullable NSString *)jsonTypeStringForClass:(Class)cls;
 
 /**
  * Retrieve the class which was previously bound to the given type string.
@@ -49,6 +51,8 @@
  * via a prior call to `bindJSONType:toClass:`.
  * It is used to represent resources matching the desired type string.
  */
-- (Class)classForJSONTypeString:(NSString *)typeString;
+- (nullable Class)classForJSONTypeString:(NSString *)typeString;
 
 @end
+
+NS_ASSUME_NONNULL_END

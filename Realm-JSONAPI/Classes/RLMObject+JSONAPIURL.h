@@ -1,5 +1,7 @@
 #import <Realm/Realm.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * This category handles decorating URLs with standard JSON:API query parameters.
  * In most cases, you should override `defaultAttributes` and `defaultRelationships`
@@ -30,7 +32,7 @@
  * @see +defaultAttributesAsFieldsDictionary
  * @see [http://jsonapi.org/format#fetching-sparse-fieldsets](http://jsonapi.org/format#fetching-sparse-fieldsets) JSON:API docs on Sparse Fieldsets
  */
-@property (class, nonatomic, readonly) NSArray<NSString *> *defaultAttributes;
+@property (class, nonatomic, readonly, nullable) NSArray<NSString *> *defaultAttributes;
 
 /**
  * These relationships are converted, along with the attributes in defaultAttributes, into
@@ -44,7 +46,7 @@
  * @see +defaultURLDecoration:
  * @see [http://jsonapi.org/format#fetching-includes](http://jsonapi.org/format#fetching-includes) JSON:API docs on Inclusion of Related Resources
  */
-@property (class, nonatomic, readonly) NSArray<NSString *> *defaultRelationships;
+@property (class, nonatomic, readonly, nullable) NSArray<NSString *> *defaultRelationships;
 
 /**
  * Turns the defaultAttributes and defaultRelationships of this object into
@@ -84,3 +86,5 @@
 + (NSDictionary<NSString *, NSArray<NSString *> *> *)fieldsIncludingRelationships:(NSArray<NSString *> *)relationships;
 
 @end
+
+NS_ASSUME_NONNULL_END

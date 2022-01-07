@@ -1,6 +1,8 @@
 // Inspired by http://blog.ablepear.com/2008/12/urlencoding-category-for-nsdictionary.html
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * Transform a dictionary of keys and values into a query parameter string worthy of appending to any URL.
  */
@@ -14,3 +16,5 @@
 - (NSString *)urlEncodedString;
 
 @end
+
+NS_ASSUME_NONNULL_END
