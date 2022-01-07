@@ -83,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @return This class's defaultAttributes NSArray as the value in a dictionary where this class's type is the key,
  * along with each of the related class's defaultAttributes as values corresponding to their types as keys.
  */
-+ (NSDictionary<NSString *, NSArray<NSString *> *> *)fieldsIncludingRelationships:(NSArray<NSString *> *)relationships;
++ (NSDictionary<NSString *, NSArray<NSString *> *> *)fieldsIncludingRelationships:(NSArray<NSString *> *)relationships NS_SWIFT_NAME(fields(includingRelationships:));
 
 @end
 

@@ -21,13 +21,13 @@ NS_ASSUME_NONNULL_BEGIN
  * unlike -mapJSONToModel:withRealm (which this method uses under the hood)
  * @return An RLMObject subclass instance, representing the same resource as the supplied json
  */
-+ (instancetype)createInRealm:(RLMRealm *)realm withJSON:(NSDictionary<NSString *, id> *)json;
++ (instancetype)createInRealm:(RLMRealm *)realm withJSON:(NSDictionary<NSString *, id> *)json NS_SWIFT_NAME(create(in:withJSON:));
 
 /**
  * Same as createInRealm:withJSON:, passing in [RLMRealm defaultRealm] as the realm
  * @see -createInRealm:withJson:
  */
-+ (instancetype)createInDefaultRealmWithJSON:(NSDictionary<NSString *, id> *)json;
++ (instancetype)createInDefaultRealmWithJSON:(NSDictionary<NSString *, id> *)json NS_SWIFT_NAME(createInDefaultRealm(withJSON:));
 
 /**
  * Add a JSON:API resource object to a given realm,
@@ -39,13 +39,13 @@ NS_ASSUME_NONNULL_BEGIN
  * unlike -mapJSONToModel:withRealm (which this method uses under the hood)
  * @return An RLMObject subclass instance, representing the same resource as the supplied json
  */
-+ (instancetype)createOrUpdateInRealm:(RLMRealm *)realm withJSON:(NSDictionary<NSString *, id> *)json;
++ (instancetype)createOrUpdateInRealm:(RLMRealm *)realm withJSON:(NSDictionary<NSString *, id> *)json NS_SWIFT_NAME(createOrUpdate(in:withJSON:));
 
 /**
  * Same as createInRealm:withJSON:, passing in [RLMRealm defaultRealm] as the realm
  * @see -createOrUpdateInRealm:withJSON:
  */
-+ (instancetype)createOrUpdateInDefaultRealmWithJSON:(NSDictionary<NSString *, id> *)json;
++ (instancetype)createOrUpdateInDefaultRealmWithJSON:(NSDictionary<NSString *, id> *)json NS_SWIFT_NAME(createOrUpdateInDefaultRealm(withJSON:));
 
 /**
  * @param json A JSON:API Resource Object
@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
  * and find any related resources via querying this realm.
  * @return A flattened map from RLMObject property names to property values, as can be passed to createInRealm:withValue:
  */
-+ (NSDictionary<NSString *, id> *)mapJSONToModel:(NSDictionary<NSString *, id> *)json withRealm:(RLMRealm *)realm;
++ (NSDictionary<NSString *, id> *)mapJSONToModel:(NSDictionary<NSString *, id> *)json withRealm:(RLMRealm *)realm NS_SWIFT_NAME(mapJSON(_:toModelWith:));
 
 @end
 

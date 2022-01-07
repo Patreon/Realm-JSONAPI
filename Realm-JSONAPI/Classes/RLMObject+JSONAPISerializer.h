@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
  * The return format will be {"data": <primary resource data>, "included": [<included resources>, ...]}
  * @see [http://jsonapi.org/format#document-resource-objects](http://jsonapi.org/format#document-resource-objects) for a definition of Resource Objects
  */
-- (NSDictionary<NSString *, id> *)toJSONWithIncludedTypes:(NSSet<NSString *> *)types;
+- (NSDictionary<NSString *, id> *)toJSONWithIncludedTypes:(NSSet<NSString *> *)types NS_SWIFT_NAME(toJSON(withIncludedTypes:));
 
 @end
 

@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param cls The Class, a subclass of RLMObject,
  * which will be used to represent resources matching the jsonType type string.
  */
-- (void)bindJSONType:(NSString *)jsonType toClass:(Class)cls;
+- (void)bindJSONType:(NSString *)jsonType toClass:(Class)cls NS_SWIFT_NAME(bind(jsonType:to:));
 
 /**
  * Retrieve the type string which was previously bound to the given class.

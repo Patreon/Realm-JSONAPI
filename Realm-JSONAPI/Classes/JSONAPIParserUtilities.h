@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @return an RLMObject representing the json[@"data"] data.
  */
 + (nullable id)putJSON:(NSDictionary<NSString *, id> *)json
-               inRealm:(RLMRealm *)realm;
+               inRealm:(RLMRealm *)realm NS_SWIFT_NAME(put(json:in:));
 
 @end
 
